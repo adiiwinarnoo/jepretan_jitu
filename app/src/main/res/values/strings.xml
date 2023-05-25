@@ -1,4 +1,24 @@
 <resources>
     <string name="app_name">JepretaJitu</string>
     <string name="tittle_name">JepretanJitu</string>
+    <string name="welcome">Selamat datang</string>
+    <string name="login">Silahkan Login terdahulu</string>
+    <string name="masukan_nik">Masukan Nomor Handphone</string>
+    <string name="masukan_password">Masukan Password</string>
+    <string name="login_button">Login</string>
+    <string name="lupa_password">Lupa Password?</string>
+    <string name="belum_punya_akun">Belum Punya Akun?</string>
+    <string name="choose_foto_profile">Silahkan pilih foto</string>
+    <string name="hint_name">Silahkan masukan nama</string>
+    <string name="hint_email">Silahkan masukan email</string>
+    <string name="hint_nomor">Silahkan masukan nomor hp</string>
+    <string name="hint_alamat">Silahkan masukan alamat</string>
+    <string name="hint_password">Silahkan masukan password</string>
+    <string name="simpan">Simpan</string>
+
+    <string-array name="level_users">
+        <item>Pilih Level</item>
+        <item>Pemakai Jasa</item>
+        <item>Penjual Jasa</item>
+    </string-array>
 </resources>

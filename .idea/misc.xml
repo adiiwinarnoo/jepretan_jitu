@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/adi winarno/AndroidStudioProjects/JepretaJitu/app/src/main/res/drawable/img_one.xml" value="0.129" />
+        <entry key="..\:/Users/adi winarno/AndroidStudioProjects/JepretaJitu/app/src/main/res/drawable/text_bg.xml" value="0.129" />
         <entry key="..\:/Users/adi winarno/AndroidStudioProjects/JepretaJitu/app/src/main/res/font/font.xml" value="0.24351851851851852" />
+        <entry key="..\:/Users/adi winarno/AndroidStudioProjects/JepretaJitu/app/src/main/res/layout/activity_login.xml" value="0.25104166666666666" />
+        <entry key="..\:/Users/adi winarno/AndroidStudioProjects/JepretaJitu/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/adi winarno/AndroidStudioProjects/JepretaJitu/app/src/main/res/layout/activity_splash_screen.xml" value="0.23802083333333332" />
       </map>
     </option>
