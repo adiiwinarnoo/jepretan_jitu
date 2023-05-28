@@ -11,6 +11,7 @@
     <string name="choose_foto_profile">Silahkan pilih foto</string>
     <string name="hint_name">Silahkan masukan nama</string>
     <string name="hint_email">Silahkan masukan email</string>
+    <string name="login_email">Masukan email</string>
     <string name="hint_nomor">Silahkan masukan nomor hp</string>
     <string name="hint_alamat">Silahkan masukan alamat</string>
     <string name="hint_password">Silahkan masukan password</string>

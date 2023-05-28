@@ -14,7 +14,7 @@ class RegisterViewModel : ViewModel() {
     var dataRegister : LiveData<RegisterResponse> = registerData
 
     fun sendRegister(name : String, email : String,nomorHp : String, password : String,levelId : Int, imageFoto : String? = null,alamat : String) : MutableLiveData<RegisterResponse>{
-        registerRepository.register(name, email,nomorHp, password,levelId,null,alamat){
+        registerRepository.register(name, email,nomorHp, password,levelId,imageFoto,alamat){
             registerData.postValue(it)
         }
 
