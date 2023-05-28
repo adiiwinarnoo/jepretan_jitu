@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.jepretajitu.databinding.ActivityRegisterBinding
@@ -38,10 +39,9 @@ class RegisterActivity : AppCompatActivity() {
             selectImage()
         }
         binding.btnSimpanRegister.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             checkedData()
-            Log.e("nomorhp", "onCreate: $nomorHp")
         }
-
 
         registerViewModel.registerData.observe(this){
             if (it.message == "Your email is registered!") Toast.makeText(this, "Email sudah terdaftar!", Toast.LENGTH_SHORT).show()
@@ -105,7 +105,6 @@ class RegisterActivity : AppCompatActivity() {
             }catch (e : Exception){
                 Log.d("IMAGE-ENCODE", "onCreate: ${e.message}")
             }
-            Log.e("nomorhp", "checkedData: $nomorHp")
             sendRegister(name!!, email!!, password!!, nomorHp!!, alamat!!, null, levelId)
         }
     }
