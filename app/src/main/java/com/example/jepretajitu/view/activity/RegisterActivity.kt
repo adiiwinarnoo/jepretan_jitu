@@ -39,23 +39,27 @@ class RegisterActivity : AppCompatActivity() {
             selectImage()
         }
         binding.btnSimpanRegister.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
             checkedData()
         }
 
         registerViewModel.registerData.observe(this){
-            if (it.message == "Your email is registered!") Toast.makeText(this, "Email sudah terdaftar!", Toast.LENGTH_SHORT).show()
-            else {
-                Toast.makeText(this, "Berhasil mendaftar!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
+            when (it.message){
+                "Register Success" -> {
+                    Toast.makeText(this, "Berhasil mendaftar!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                }
+                "Your email is registered!" -> {
+                    Toast.makeText(this,
+                        "Email sudah terdaftar!", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
 
     fun sendRegister(name : String, email : String, password : String, nomorHp : String, alamat : String,
-                     imageFoto : String?= null,levelId : Int){
-        registerViewModel.sendRegister(name, email,nomorHp, password,levelId,null,alamat)
+                     imageFoto : String?,levelId : Int){
+        registerViewModel.sendRegister(name, email,nomorHp, password,levelId,imageFoto,alamat)
 
     }
 
@@ -99,13 +103,13 @@ class RegisterActivity : AppCompatActivity() {
             password = binding.edtPassword.text.toString()
             nomorHp = binding.edtNomorHp.text.toString()
             alamat = binding.edtAlamat.text.toString()
-            Log.d("IMAGE-ENCODE", "checkedData: $imageFoto")
             try {
                 nomorHp?.toInt()
             }catch (e : Exception){
                 Log.d("IMAGE-ENCODE", "onCreate: ${e.message}")
             }
-            sendRegister(name!!, email!!, password!!, nomorHp!!, alamat!!, null, levelId)
+            binding.progressBar.visibility = View.VISIBLE
+            sendRegister(name!!, email!!, password!!, nomorHp!!, alamat!!, imageFoto, levelId)
         }
     }
 }

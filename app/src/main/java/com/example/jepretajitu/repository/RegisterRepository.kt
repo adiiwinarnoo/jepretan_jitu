@@ -14,7 +14,7 @@ class RegisterRepository {
     val apiConfig = ApiConfig()
 
     fun register(name : String, email : String,nomorHp : String, password : String,levelId : Int,
-                 imageFoto : String? = null,alamat : String, onResult : (result : RegisterResponse)-> Unit){
+                 imageFoto : String?,alamat : String, onResult : (result : RegisterResponse)-> Unit){
         apiConfig.server.register(name,email,nomorHp,password,levelId,imageFoto,alamat).enqueue(
             object : Callback<RegisterResponse>{
                 override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
