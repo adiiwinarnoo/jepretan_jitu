@@ -1,9 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.LoginActivity">
+
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_extrabold"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/edt_nomor_hp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/img_one"
+        app:layout_constraintTop_toBottomOf="@id/tvTittle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="number"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:hint="@string/masukan_nik"
+        android:paddingStart="20dp"
+        android:textSize="16sp"/>
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/img_one"
+        app:layout_constraintTop_toBottomOf="@id/edt_nomor_hp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="textPassword"
+        android:fontFamily="@font/poppins_extrabold"
+        android:layout_marginTop="20dp"
+        android:hint="@string/masukan_password"
+        android:paddingStart="20dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/btnLogin"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/img_one"
+        android:backgroundTint="#2CBAFA"
+        android:fontFamily="@font/poppins_extrabold"
+        app:layout_constraintTop_toBottomOf="@id/edtPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/login_button"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/btnLupaPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="@id/btnLogin"
+        android:text="@string/lupa_password"
+        android:textStyle="bold"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/poppins_light"
+        android:textColor="@color/black"
+        android:layout_marginTop="35dp"/>
+    <TextView
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnLupaPassword"
+        app:layout_constraintStart_toStartOf="@id/btnLogin"
+        android:text="@string/belum_punya_akun"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_light"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
