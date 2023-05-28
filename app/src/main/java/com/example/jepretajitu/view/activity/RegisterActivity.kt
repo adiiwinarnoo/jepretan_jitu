@@ -8,13 +8,16 @@ import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.jepretajitu.databinding.ActivityRegisterBinding
+import com.example.jepretajitu.viewmodel.RegisterViewModel
 import java.io.ByteArrayOutputStream
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityRegisterBinding
+    lateinit var registerViewModel : RegisterViewModel
     var REQUEST_CODE_GALERI = 100
     var name : String? = null
     var email : String? = null
@@ -22,30 +25,38 @@ class RegisterActivity : AppCompatActivity() {
     var nomorHp : String? = null
     var alamat : String? = null
     var imageFoto : String? = null
+    var levelId : Int = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        registerViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
+
         binding.imageProfile.setOnClickListener {
             selectImage()
         }
         binding.btnSimpanRegister.setOnClickListener {
-            name = binding.edtName.text.toString()
-            email = binding.edtEmail.text.toString()
-            password = binding.edtPassword.text.toString()
-            nomorHp = binding.edtNomorHp.text.toString()
-
-            try {
-                nomorHp?.toInt()
-            }catch (e : Exception){
-                null
-            }
-            alamat = binding.edtAlamat.text.toString()
-            Log.d("payload-register", "onCreate: nama = $name, " +
-                    "email = $email, password = $password, nomorHp = $nomorHp, alamat = $alamat")
+            checkedData()
+            Log.e("nomorhp", "onCreate: $nomorHp")
         }
+
+
+        registerViewModel.registerData.observe(this){
+            if (it.message == "Your email is registered!") Toast.makeText(this, "Email sudah terdaftar!", Toast.LENGTH_SHORT).show()
+            else {
+                Toast.makeText(this, "Berhasil mendaftar!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
+    }
+
+    fun sendRegister(name : String, email : String, password : String, nomorHp : String, alamat : String,
+                     imageFoto : String?= null,levelId : Int){
+        registerViewModel.sendRegister(name, email,nomorHp, password,levelId,null,alamat)
+
     }
 
     fun selectImage(){
@@ -71,6 +82,31 @@ class RegisterActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
             binding.imageProfile.setImageURI(imageUri)
+        }
+    }
+
+    private fun checkedData(){
+        if (binding.edtName.text.isNullOrEmpty()) Toast.makeText(this, "Nama tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        else if (binding.edtEmail.text.isNullOrEmpty()) Toast.makeText(this, "Email tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        else if (binding.edtPassword.text.isNullOrEmpty()) Toast.makeText(this, "Password tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        else if (binding.edtNomorHp.text.isNullOrEmpty()) Toast.makeText(this, "Nomor HP tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        else if (binding.edtAlamat.text.isNullOrEmpty()) Toast.makeText(this, "Alamat tidak boleh kosong!", Toast.LENGTH_SHORT).show()
+        else if (imageFoto.isNullOrEmpty()) Toast.makeText(this, "Silahkan pilih gambar dahulu sebelum menyimpan data",
+                Toast.LENGTH_SHORT).show()
+        else{
+            name = binding.edtName.text.toString()
+            email = binding.edtEmail.text.toString()
+            password = binding.edtPassword.text.toString()
+            nomorHp = binding.edtNomorHp.text.toString()
+            alamat = binding.edtAlamat.text.toString()
+            Log.d("IMAGE-ENCODE", "checkedData: $imageFoto")
+            try {
+                nomorHp?.toInt()
+            }catch (e : Exception){
+                Log.d("IMAGE-ENCODE", "onCreate: ${e.message}")
+            }
+            Log.e("nomorhp", "checkedData: $nomorHp")
+            sendRegister(name!!, email!!, password!!, nomorHp!!, alamat!!, null, levelId)
         }
     }
 }

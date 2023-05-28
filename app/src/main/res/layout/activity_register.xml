@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/icon_bg"
     tools:context=".view.activity.RegisterActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -13,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/take_pict"/>
 
     <TextView
@@ -24,6 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/choose_foto_profile"
+        android:textColor="@color/white"
         android:fontFamily="@font/poppins_black"
         android:layout_marginTop="15dp"/>
 
@@ -42,7 +44,6 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:fontFamily="@font/poppins_extrabold"
         android:background="@drawable/text_bg"/>
     <EditText
         android:id="@+id/edt_email"
@@ -59,7 +60,6 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:fontFamily="@font/poppins_extrabold"
         android:background="@drawable/text_bg"/>
     <EditText
         android:id="@+id/edt_nomor_hp"
@@ -76,7 +76,6 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:fontFamily="@font/poppins_extrabold"
         android:background="@drawable/text_bg"/>
     <EditText
         android:id="@+id/edt_alamat"
@@ -93,7 +92,6 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:fontFamily="@font/poppins_extrabold"
         android:background="@drawable/text_bg"/>
     <EditText
         android:id="@+id/edt_password"
@@ -111,7 +109,6 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:fontFamily="@font/poppins_extrabold"
         android:background="@drawable/text_bg"/>
     <Spinner
         android:id="@+id/spinner_level"
@@ -142,5 +139,15 @@
         android:textSize="18sp"
         android:fontFamily="@font/poppins_black"
         android:textColor="@color/white"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

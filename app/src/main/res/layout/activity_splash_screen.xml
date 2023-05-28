@@ -7,27 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.SplashScreenActivity">
 
-    <TextView
-        android:id="@+id/tv_tittle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/tittle_name"
-        android:textSize="28sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/poppins_black"
-        android:layout_marginTop="55dp"/>
-
     <ImageView
         android:id="@+id/image_logo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_launcher_background"/>
+        android:src="@drawable/icon_jepretan"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
