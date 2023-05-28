@@ -18,7 +18,6 @@ class RegisterRepository {
         apiConfig.server.register(name,email,nomorHp,password,levelId,imageFoto,alamat).enqueue(
             object : Callback<RegisterResponse>{
                 override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-                    Log.d("SUCCESS-REGIS", "onResponse1: ${response.code()}")
                     registerSuccess(response,onResult)
 
                 }
@@ -38,7 +37,6 @@ class RegisterRepository {
                 onResult(response.body()!!)
             }
             400 ->{
-                Log.d("SUCCESS-REGIS", "onResponse-faild: ${response.code()}")
                 var default : RegisterResponse? = null
                 val messageError = "Your email is registered!"
                 default = RegisterResponse(message = messageError)
