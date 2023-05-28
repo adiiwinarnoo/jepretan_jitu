@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class RegisterRepository {
 
-    val apiConfig = ApiConfig()
+    private val apiConfig = ApiConfig()
 
     fun register(name : String, email : String,nomorHp : String, password : String,levelId : Int,
                  imageFoto : String?,alamat : String, onResult : (result : RegisterResponse)-> Unit){

@@ -12,7 +12,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/login")
     fun login(
-        @Field("nik") nik : String,
+        @Field("email") nik : String,
         @Field("password") password : String) : Call<LoginResponse>
 
     @FormUrlEncoded
