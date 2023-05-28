@@ -46,7 +46,7 @@
         />
 
     <EditText
-        android:id="@+id/edt_nomor_hp"
+        android:id="@+id/edt_email"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@drawable/img_one"
@@ -55,7 +55,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:inputType="number"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_extrabold"
         android:hint="@string/login_email"
@@ -66,7 +65,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@drawable/img_one"
-        app:layout_constraintTop_toBottomOf="@id/edt_nomor_hp"
+        app:layout_constraintTop_toBottomOf="@id/edt_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="20dp"
@@ -79,7 +78,7 @@
         android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/btnLogin"
+        android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@drawable/img_one"
@@ -100,8 +99,8 @@
         android:id="@+id/btnLupaPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="@id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
+        app:layout_constraintStart_toStartOf="@id/btn_login"
         android:text="@string/lupa_password"
         android:textStyle="bold"
         android:layout_marginStart="5dp"
@@ -113,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/btnLupaPassword"
-        app:layout_constraintStart_toStartOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="@id/btn_login"
         android:text="@string/belum_punya_akun"
         android:textStyle="bold"
         android:fontFamily="@font/poppins_light"
