@@ -1,5 +1,6 @@
 package com.example.jepretajitu.network
 
+import com.example.jepretajitu.model.AddKatalogResponse
 import com.example.jepretajitu.model.LoginResponse
 import com.example.jepretajitu.model.RegisterResponse
 import retrofit2.Call
@@ -25,4 +26,18 @@ interface ApiService {
         @Field("id_level") id_level : Int,
         @Field("foto") foto : String? = null,
         @Field("alamat") alamat : String,) : Call<RegisterResponse>
+
+    @FormUrlEncoded
+    @POST("api/upload-katalog")
+    fun uploadKatalog(
+        @Field("id_user") idUser : Int,
+        @Field("foto") foto : String,
+        @Field("foto_two") fotoTwo : String,
+        @Field("foto_three") fotoThree : String,
+        @Field("judul_product") judulProduct : String,
+        @Field("nomor_whatsapp") nomorWhatsapp : String,
+        @Field("deskripsi") deskripsi : String,
+        @Field("domisili") domisili : String,
+        @Field("harga_product") hargaProduct : String
+        ) : Call<AddKatalogResponse>
 }
