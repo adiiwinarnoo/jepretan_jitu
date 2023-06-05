@@ -121,7 +121,7 @@
         android:layout_height="50dp"
         android:background="@drawable/img_one"
         android:backgroundTint="@color/icon_bg"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_light"
         android:text="@string/upload"

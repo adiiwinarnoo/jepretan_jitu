@@ -1,5 +1,6 @@
 package com.example.jepretajitu.view.activity.fotographer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.jepretajitu.R
@@ -20,5 +21,10 @@ class AddFotoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.tvFotograpWelcome.text = "${R.string.selamat_datang_kembali} ${sharedPrefences.getStringData(Constant.ADD_NAME)}"
+
+        binding.btnUploadKatalog.setOnClickListener {
+            startActivity(Intent(this, UploadKatalogActivity::class.java))
+            finish()
+        }
     }
 }

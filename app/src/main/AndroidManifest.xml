@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".UploadKatalogActivity"
+            android:name=".view.activity.fotographer.UploadKatalogActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.fotographer.AddFotoActivity"
