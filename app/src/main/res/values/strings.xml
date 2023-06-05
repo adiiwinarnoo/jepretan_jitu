@@ -21,6 +21,16 @@
     <string name="selamat_datang_admin">Selamat datang Admin</string>
     <string name="approve_pembayaran">Approve Pembayaran</string>
     <string name="update_best_seller">Update Best Seller</string>
+    <string name="upload_foto_katalog">Upload Foto Katalog</string>
+    <string name="profile">Profile</string>
+    <string name="logout">logout</string>
+    <string name="selamat_datang_kembali">Selamat datang kembali</string>
+    <string name="upload_katalog_text">Silahkan Upload Katalog Anda</string>
+    <string name="silahkan_masukan_domisili_anda">Silahkan masukan domisili</string>
+    <string name="silahkan_masukan_deskripsi">Silahkan masukan deskripsi</string>
+    <string name="silahkan_masukan_harga">Silahkan masukan harga</string>
+    <string name="silahkan_pilih_foto_untuk_katalog">Silahkan pilih Foto untuk Katalog</string>
+    <string name="upload">Upload</string>
 
     <string-array name="level_users">
         <item>Pilih Level</item>
