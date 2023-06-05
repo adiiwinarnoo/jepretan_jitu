@@ -50,5 +50,8 @@ data class DataLogin(
 	val alamat: String? = null,
 
 	@field:SerializedName("status")
-	val status: Int? = null
+	val status: Int? = null,
+
+	@field:SerializedName("nomor_hp")
+	val nomorHp: String? = null,
 )

@@ -53,6 +53,8 @@ class LoginActivity : AppCompatActivity() {
                     Constant.SUCCESS_LOGIN -> {
                         sharePreferences.putIntData(Constant.ADD_ID_LEVEL,it.dataLogin?.idLevel!!)
                         sharePreferences.putStringData(Constant.ADD_NAME,it.dataLogin.nama)
+                        sharePreferences.putStringData(Constant.ADD_NOMOR_WHATSAPP,it.dataLogin.nomorHp)
+                        sharePreferences.putIntData(Constant.ADD_ID_USER, it.dataLogin.id!!)
                         when (it.dataLogin.idLevel) {
                             1 -> {
                                 startActivity(Intent(this, MenuUtama::class.java))

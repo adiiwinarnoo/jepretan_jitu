@@ -32,6 +32,13 @@
     <string name="silahkan_pilih_foto_untuk_katalog">Silahkan pilih Foto untuk Katalog</string>
     <string name="upload">Upload</string>
 
+    <string name="editext_domisili_null">Domisili tidak boleh kosong</string>
+    <string name="editext_deskripsi_null">Deskripsi tidak boleh kosong</string>
+    <string name="editext_harga_null">Harga tidak boleh kosong</string>
+    <string name="editext_judul_null">Judul tidak boleh kosong</string>
+    <string name="image_null">Foto tidak boleh kosong</string>
+    <string name="katalog_success">Upload katalog anda berhasil</string>
+
     <string-array name="level_users">
         <item>Pilih Level</item>
         <item>Pemakai Jasa</item>
