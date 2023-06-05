@@ -8,6 +8,8 @@ class Constant {
         const val CHECK_CONNECTION = "cek koneksi anda"
         const val SUCCESS_LOGIN = "Login Berhasil"
         const val DATA_EMPTY = "data tidak boleh kosong"
+        const val EMAIL_NOT_REGIST = "Email Tidak Terdaftar, Password Gagal Diubah"
+        const val SUCCESS_CHANGE_PASSWORD = "Password Berhasil Diubah"
 
         // saving id level to share pref
         const val ADD_ID_LEVEL = "add_id_level"

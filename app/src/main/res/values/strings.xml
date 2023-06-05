@@ -38,6 +38,7 @@
     <string name="editext_judul_null">Judul tidak boleh kosong</string>
     <string name="image_null">Foto tidak boleh kosong</string>
     <string name="katalog_success">Upload katalog anda berhasil</string>
+    <string name="tv_simpan">SIMPAN</string>
 
     <string-array name="level_users">
         <item>Pilih Level</item>
