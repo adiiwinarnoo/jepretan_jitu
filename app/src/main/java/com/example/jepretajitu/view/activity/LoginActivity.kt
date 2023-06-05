@@ -37,6 +37,10 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             checkedData()
         }
+        binding.btnLupaPassword.setOnClickListener {
+            startActivity(Intent(this,ForgotPasswordActivity::class.java))
+            finish()
+        }
     }
 
     private fun checkedData(){

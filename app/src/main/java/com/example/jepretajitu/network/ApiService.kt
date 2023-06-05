@@ -1,6 +1,7 @@
 package com.example.jepretajitu.network
 
 import com.example.jepretajitu.model.AddKatalogResponse
+import com.example.jepretajitu.model.ForgotPasswordResponse
 import com.example.jepretajitu.model.LoginResponse
 import com.example.jepretajitu.model.RegisterResponse
 import retrofit2.Call
@@ -15,6 +16,12 @@ interface ApiService {
     fun login(
         @Field("email") nik : String,
         @Field("password") password : String) : Call<LoginResponse>
+
+    @FormUrlEncoded
+    @POST("api/forgot-password")
+    fun forgotPassword(
+        @Field("email") nik : String,
+        @Field("password") password : String) : Call<ForgotPasswordResponse>
 
     @FormUrlEncoded
     @POST("api/register")
