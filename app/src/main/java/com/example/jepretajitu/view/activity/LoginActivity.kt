@@ -10,13 +10,16 @@ import com.example.jepretajitu.MainActivity
 import com.example.jepretajitu.R
 import com.example.jepretajitu.databinding.ActivityLoginBinding
 import com.example.jepretajitu.utils.Constant
+import com.example.jepretajitu.utils.SharedPrefences
 import com.example.jepretajitu.view.activity.admin.MenuUtama
+import com.example.jepretajitu.view.activity.fotographer.AddFotoActivity
 import com.example.jepretajitu.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityLoginBinding
     lateinit var loginViewModel : LoginViewModel
+    lateinit var sharePreferences : SharedPrefences
     var email : String? = null
     var password : String? = null
 
@@ -24,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        sharePreferences = SharedPrefences(this)
         loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         binding.btnRegister.setOnClickListener {
@@ -47,7 +51,9 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login(email!!, password!!).observe(this){
                 when (it.message){
                     Constant.SUCCESS_LOGIN -> {
-                        when (it.dataLogin!!.idLevel) {
+                        sharePreferences.putIntData(Constant.ADD_ID_LEVEL,it.dataLogin?.idLevel!!)
+                        sharePreferences.putStringData(Constant.ADD_NAME,it.dataLogin.nama)
+                        when (it.dataLogin.idLevel) {
                             1 -> {
                                 startActivity(Intent(this, MenuUtama::class.java))
                                 finish()
@@ -56,7 +62,8 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.makeText(this, "ini user", Toast.LENGTH_SHORT).show()
                             }
                             else -> {
-                                Toast.makeText(this, "ini fotografer", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, AddFotoActivity::class.java))
+                                finish()
                             }
                         }
                     }
