@@ -39,6 +39,7 @@
     <string name="image_null">Foto tidak boleh kosong</string>
     <string name="katalog_success">Upload katalog anda berhasil</string>
     <string name="tv_simpan">SIMPAN</string>
+    <string name="lihat_katalog">Lihat Katalog</string>
 
     <string-array name="level_users">
         <item>Pilih Level</item>
