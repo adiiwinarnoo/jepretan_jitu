@@ -1,12 +1,10 @@
 package com.example.jepretajitu.network
 
-import com.example.jepretajitu.model.AddKatalogResponse
-import com.example.jepretajitu.model.ForgotPasswordResponse
-import com.example.jepretajitu.model.LoginResponse
-import com.example.jepretajitu.model.RegisterResponse
+import com.example.jepretajitu.model.*
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -47,4 +45,8 @@ interface ApiService {
         @Field("domisili") domisili : String,
         @Field("harga_product") hargaProduct : String
         ) : Call<AddKatalogResponse>
+
+
+    @GET("api/katalog-all")
+    fun getKatalogAll() : Call<DataKatalogResponse>
 }
