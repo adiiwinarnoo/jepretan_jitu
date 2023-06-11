@@ -13,6 +13,7 @@ import com.example.jepretajitu.utils.Constant
 import com.example.jepretajitu.utils.SharedPrefences
 import com.example.jepretajitu.view.activity.admin.MenuUtama
 import com.example.jepretajitu.view.activity.fotographer.AddFotoActivity
+import com.example.jepretajitu.view.activity.user.MUtamaActivity
 import com.example.jepretajitu.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -65,7 +66,8 @@ class LoginActivity : AppCompatActivity() {
                                 finish()
                             }
                             2 -> {
-                                Toast.makeText(this, "ini user", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, MUtamaActivity::class.java))
+                                finish()
                             }
                             else -> {
                                 startActivity(Intent(this, AddFotoActivity::class.java))

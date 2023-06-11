@@ -1,5 +1,6 @@
 package com.example.jepretajitu.view.activity.user
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.jepretajitu.R
@@ -22,7 +23,8 @@ class MUtamaActivity : AppCompatActivity() {
             Constant.ADD_NAME)}"
 
         binding.btnUploadKatalog.setOnClickListener {
-            start
+            startActivity(Intent(this,LihatKatalogActivity::class.java))
+            finish()
         }
     }
 }

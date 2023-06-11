@@ -17,10 +17,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".LihatKatalogActivity"
+            android:name=".view.activity.user.LihatKatalogActivity"
             android:exported="false" />
         <activity
-            android:name=".MUtamaActivity"
+            android:name=".view.activity.user.MUtamaActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.ForgotPasswordActivity"
