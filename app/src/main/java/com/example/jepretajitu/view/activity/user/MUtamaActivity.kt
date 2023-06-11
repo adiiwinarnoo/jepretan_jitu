@@ -19,12 +19,11 @@ class MUtamaActivity : AppCompatActivity() {
         sharedPrefences = SharedPrefences(this)
         setContentView(binding.root)
 
-        binding.tvFotograpWelcome.text = "${R.string.selamat_datang_kembali} ${sharedPrefences.getStringData(
+        binding.tvFotograpWelcome.text = "Selamat datang, ${sharedPrefences.getStringData(
             Constant.ADD_NAME)}"
 
         binding.btnUploadKatalog.setOnClickListener {
             startActivity(Intent(this,LihatKatalogActivity::class.java))
-            finish()
         }
     }
 }

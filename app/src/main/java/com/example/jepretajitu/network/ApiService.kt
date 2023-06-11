@@ -2,10 +2,7 @@ package com.example.jepretajitu.network
 
 import com.example.jepretajitu.model.*
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -49,4 +46,7 @@ interface ApiService {
 
     @GET("api/katalog-all")
     fun getKatalogAll() : Call<DataKatalogResponse>
+
+    @GET("api/katalog/{id}")
+    fun getKatalogById(@Path("id") idUser : Int) : Call<KatalogByIdResponse>
 }
