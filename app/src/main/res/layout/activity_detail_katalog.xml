@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/viewPagerImage"
-        app:layout_constraintBottom_toTopOf="@id/btn_pesan">
+        app:layout_constraintBottom_toTopOf="@id/btn_review">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -115,13 +115,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                app:layout_constraintStart_toStartOf="parent"
+                tools:listitem="@layout/item_review"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_ulasan"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -131,11 +134,25 @@
     </androidx.core.widget.NestedScrollView>
 
 
-
+    <TextView
+        android:id="@+id/btn_review"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:background="#2CBAFA"
+        android:fontFamily="@font/poppins_extrabold"
+        app:layout_constraintBottom_toTopOf="@id/btn_pesan"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="BERIKAN ULASAN"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="12sp"/>
     <TextView
         android:id="@+id/btn_pesan"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
         android:background="#2CBAFA"
         android:fontFamily="@font/poppins_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,6 +162,6 @@
         android:gravity="center"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:textSize="18sp"/>
+        android:textSize="12sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

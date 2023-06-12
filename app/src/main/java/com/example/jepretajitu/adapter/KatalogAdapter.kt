@@ -18,7 +18,7 @@ class KatalogAdapter (val models : List<DataKatalogItem?>?) :
     private lateinit var itemClickListener : ItemClickListener
 
     interface ItemClickListener{
-        fun onClick(view: View, position: Int, id : Int)
+        fun onClick(view: View, position: Int, id : Int, idProduct : Int)
     }
 
     fun setItemClickListener(itemClickListener: ItemClickListener){
@@ -43,7 +43,7 @@ class KatalogAdapter (val models : List<DataKatalogItem?>?) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.katalogCard.setOnClickListener {
-            itemClickListener.onClick(it,position,models!![position]!!.idUser!!)
+            itemClickListener.onClick(it,position,models!![position]!!.idUser!!,models[position]!!.id!!)
         }
         holder.bind(models!![position]!!)
         holder.titleBanner.text = models[position]?.judulProduct

@@ -49,4 +49,7 @@ interface ApiService {
 
     @GET("api/katalog/{id}")
     fun getKatalogById(@Path("id") idUser : Int) : Call<KatalogByIdResponse>
+
+    @GET("api/review/{id}")
+    fun getReview(@Path("id") idProduct : Int) : Call<ReviewResponse>
 }

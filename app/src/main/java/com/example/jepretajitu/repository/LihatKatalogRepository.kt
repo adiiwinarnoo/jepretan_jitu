@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.jepretajitu.model.DataKatalogResponse
 import com.example.jepretajitu.model.ForgotPasswordResponse
 import com.example.jepretajitu.model.KatalogByIdResponse
+import com.example.jepretajitu.model.ReviewResponse
 import com.example.jepretajitu.network.ApiConfig
 import com.example.jepretajitu.utils.Constant
 import retrofit2.Call
@@ -35,6 +36,19 @@ class LihatKatalogRepository {
             }
 
             override fun onFailure(call: Call<KatalogByIdResponse>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
+    fun getReview(idProduct : Int, onResult: (result: ReviewResponse) -> Unit){
+        apiConfig.server.getReview(idProduct).enqueue(object : Callback<ReviewResponse>{
+            override fun onResponse(call: Call<ReviewResponse>, response: Response<ReviewResponse>) {
+                getReviewSuccess(response,onResult)
+            }
+
+            override fun onFailure(call: Call<ReviewResponse>, t: Throwable) {
                 Log.d(TAG, "onFailure: ${t.message}")
             }
 
@@ -78,6 +92,26 @@ class LihatKatalogRepository {
                 var default : KatalogByIdResponse? = null
                 val messageError = Constant.EMAIL_NOT_REGIST
                 default = KatalogByIdResponse(message = messageError)
+                onResult(default)
+            }
+        }
+    }
+
+    fun getReviewSuccess(response: Response<ReviewResponse>, onResult: (result: ReviewResponse) -> Unit){
+        when (response.code()){
+            200 -> {
+                onResult(response.body()!!)
+            }
+            400 ->{
+                var default : ReviewResponse? = null
+                val messageError = Constant.CHECK_CONNECTION
+                default = ReviewResponse(message = messageError)
+                onResult(default)
+            }
+            401 ->{
+                var default : ReviewResponse? = null
+                val messageError = Constant.EMAIL_NOT_REGIST
+                default = ReviewResponse(message = messageError)
                 onResult(default)
             }
         }

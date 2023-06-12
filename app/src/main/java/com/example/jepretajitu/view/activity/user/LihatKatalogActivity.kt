@@ -34,9 +34,10 @@ class LihatKatalogActivity : AppCompatActivity() {
             binding.recyclerView.adapter = adapterKatalog
 
             adapterKatalog.setItemClickListener(object : KatalogAdapter.ItemClickListener{
-                override fun onClick(view: View, position: Int, id : Int) {
+                override fun onClick(view: View, position: Int, id : Int, idProduct : Int) {
                     val intent = Intent(this@LihatKatalogActivity,DetailKatalogActivity::class.java)
                     intent.putExtra("ID-USER",id)
+                    intent.putExtra("ID-PRODUCT",idProduct)
                     startActivity(intent)
                 }
 
