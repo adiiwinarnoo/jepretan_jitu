@@ -1,7 +1,10 @@
 package com.example.jepretajitu.view.activity.user
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jepretajitu.adapter.KatalogAdapter
@@ -29,8 +32,15 @@ class LihatKatalogActivity : AppCompatActivity() {
         lihatKatalogViewModel.katalogData.observe(this){
             adapterKatalog = KatalogAdapter(it.dataKatalog)
             binding.recyclerView.adapter = adapterKatalog
+
+            adapterKatalog.setItemClickListener(object : KatalogAdapter.ItemClickListener{
+                override fun onClick(view: View, position: Int, id : Int) {
+                    val intent = Intent(this@LihatKatalogActivity,DetailKatalogActivity::class.java)
+                    intent.putExtra("ID-USER",id)
+                    startActivity(intent)
+                }
+
+            })
         }
-
-
     }
 }
