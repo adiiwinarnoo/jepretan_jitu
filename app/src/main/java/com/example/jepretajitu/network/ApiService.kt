@@ -52,4 +52,7 @@ interface ApiService {
 
     @GET("api/review/{id}")
     fun getReview(@Path("id") idProduct : Int) : Call<ReviewResponse>
+
+    @GET("api/profile/{id}")
+    fun getProfile (@Path("id") idUser : Int) : Call<ProfileResponse>
 }
