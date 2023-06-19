@@ -14,7 +14,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-        buildConfigField "String","BASE_URL","\"http://192.168.1.10:8000/\""
+        buildConfigField "String","BASE_URL","\"http://192.168.0.162:8000/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -70,4 +70,7 @@ dependencies {
 
     /** Viewpager indicator **/
     implementation 'me.relex:circleindicator:2.1.6'
+
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+    testImplementation 'io.mockk:mockk:1.12.0'
 }
