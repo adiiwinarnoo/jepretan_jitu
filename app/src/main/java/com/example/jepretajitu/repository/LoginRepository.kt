@@ -4,17 +4,28 @@ import android.util.Log
 import com.example.jepretajitu.model.LoginResponse
 import com.example.jepretajitu.network.ApiConfig
 import com.example.jepretajitu.utils.Constant
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class LoginRepository {
 
-    private val apiConfig = ApiConfig()
+    var apiConfig = ApiConfig()
 
     fun login(email : String, password : String, onResult : (result : LoginResponse)-> Unit){
         apiConfig.server.login(email,password).enqueue(
-            object : retrofit2.Callback<LoginResponse>{
-                override fun onResponse(call: retrofit2.Call<LoginResponse>, response: retrofit2.Response<LoginResponse>) {
-                    loginSuccess(response,onResult)
+            object : Callback<LoginResponse> {
+                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                    Log.d("UNIT-TEST", "onResponse: ${response.body().toString()}")
+                    if (response.isSuccessful && response.body() != null){
+                        loginSuccess(response,onResult)
+                        Response.success(response.body())
+                    }else {
+                        val messageError = "Login failed"
+                        val default = LoginResponse(message = messageError)
+                        Response.success(default)
+                        onResult(default)
+                    }
                 }
 
                 override fun onFailure(call: retrofit2.Call<LoginResponse>, t: Throwable) {
@@ -32,15 +43,18 @@ class LoginRepository {
                 onResult(response.body()!!)
             }
             400 ->{
-                var default : LoginResponse? = null
                 val messageError = Constant.CHECK_CONNECTION
-                default = LoginResponse(message = messageError)
+                val default = LoginResponse(message = messageError)
                 onResult(default)
             }
             401 ->{
-                var default : LoginResponse? = null
                 val messageError = Constant.WRONG_PASSWORD_EMAIL
-                default = LoginResponse(message = messageError)
+                val default = LoginResponse(message = messageError)
+                onResult(default)
+            }
+            else -> {
+                val messageError = "Unknown error"
+                val default = LoginResponse(message = messageError)
                 onResult(default)
             }
         }

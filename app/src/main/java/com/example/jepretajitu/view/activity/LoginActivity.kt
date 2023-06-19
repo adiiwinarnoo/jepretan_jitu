@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.jepretajitu.BuildConfig
 import com.example.jepretajitu.MainActivity
 import com.example.jepretajitu.R
 import com.example.jepretajitu.databinding.ActivityLoginBinding

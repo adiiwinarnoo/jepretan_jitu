@@ -16,9 +16,6 @@ data class LoginResponse(
 
 data class DataLogin(
 
-	@field:SerializedName("nik")
-	val nik: String? = null,
-
 	@field:SerializedName("nama")
 	val nama: String? = null,
 
@@ -28,29 +25,20 @@ data class DataLogin(
 	@field:SerializedName("id_level")
 	val idLevel: Int? = null,
 
-	@field:SerializedName("telepon")
-	val telepon: Long? = null,
-
 	@field:SerializedName("created_at")
 	val createdAt: String? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,
 
-	@field:SerializedName("avatar")
-	val avatar: String? = null,
+	@field:SerializedName("foto")
+	val foto: String? = null,
 
 	@field:SerializedName("email")
 	val email: String? = null,
 
-	@field:SerializedName("username")
-	val username: String? = null,
-
 	@field:SerializedName("alamat")
 	val alamat: String? = null,
-
-	@field:SerializedName("status")
-	val status: Int? = null,
 
 	@field:SerializedName("nomor_hp")
 	val nomorHp: String? = null,
