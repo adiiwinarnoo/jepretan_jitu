@@ -37,14 +37,12 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-
-
         profileViewModel.getProfile(sharePreferences.getIntData(Constant.ADD_ID_USER)).observe(this){
             binding.tvNama2.text = it.dataProfile!!.nama
             binding.tvEmail2.text = it.dataProfile.email
             binding.tvNomorHp2.text = it.dataProfile.nomorHp
             binding.tvAlamat2.text = it.dataProfile.alamat
-            Glide.with(this).load("http://192.168.1.10:8000" + it.dataProfile.foto).into(binding.imageProfile)
+            Glide.with(this).load("http://192.168.0.162:8000" + it.dataProfile.foto).into(binding.imageProfile)
             binding.progressBar.visibility = View.GONE
         }
     }

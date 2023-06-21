@@ -15,12 +15,14 @@ import com.example.jepretajitu.databinding.ActivityUbahProfileBinding
 import com.example.jepretajitu.utils.Constant
 import com.example.jepretajitu.utils.SharedPrefences
 import com.example.jepretajitu.viewmodel.ProfileViewModel
+import com.example.jepretajitu.viewmodel.RegisterViewModel
 import java.io.ByteArrayOutputStream
 
 class UbahProfileActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityUbahProfileBinding
     lateinit var profileViewModel : ProfileViewModel
+    lateinit var registerViewModel : RegisterViewModel
     lateinit var sharePreferences : SharedPrefences
     var imageFoto : String? = null
     var REQUEST_CODE_GALERI = 100
@@ -36,10 +38,15 @@ class UbahProfileActivity : AppCompatActivity() {
         binding = ActivityUbahProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         sharePreferences = SharedPrefences(this)
 
         binding.imageProfile.setOnClickListener {
             selectImage()
+        }
+
+        binding.btnSimpanRegister.setOnClickListener {
+            checkedData()
         }
 
 
@@ -48,7 +55,7 @@ class UbahProfileActivity : AppCompatActivity() {
             binding.edtAlamat.setText(it.dataProfile.alamat)
             binding.edtEmail.setText(it.dataProfile.email)
             binding.edtNomorHp.setText(it.dataProfile.nomorHp)
-            Glide.with(this).load("http://192.168.1.10:8000" + it.dataProfile.foto).into(binding.imageProfile)
+            Glide.with(this).load("http://192.168.0.162:8000" + it.dataProfile.foto).into(binding.imageProfile)
         }
     }
 
@@ -66,6 +73,7 @@ class UbahProfileActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if ((requestCode == REQUEST_CODE_GALERI) && (resultCode == RESULT_OK) && (data != null)){
             var imageUri = data.data
+            Log.d("IMAGE-FOTO", "onActivityResult: $imageUri")
             try {
                 var bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,imageUri)
                 var byteOut = ByteArrayOutputStream()
@@ -73,6 +81,7 @@ class UbahProfileActivity : AppCompatActivity() {
                 var imageBytes = byteOut.toByteArray()
                 imageFoto = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT)
                 binding.imageProfile.setImageBitmap(bitmap)
+                println("IYA")
             }
             catch (e : Exception){
                 e.printStackTrace()
@@ -85,7 +94,6 @@ class UbahProfileActivity : AppCompatActivity() {
     private fun checkedData(){
         if (binding.edtName.text.isNullOrEmpty()) Toast.makeText(this, "Nama tidak boleh kosong!", Toast.LENGTH_SHORT).show()
         else if (binding.edtEmail.text.isNullOrEmpty()) Toast.makeText(this, "Email tidak boleh kosong!", Toast.LENGTH_SHORT).show()
-        else if (binding.edtPassword.text.isNullOrEmpty()) Toast.makeText(this, "Password tidak boleh kosong!", Toast.LENGTH_SHORT).show()
         else if (binding.edtNomorHp.text.isNullOrEmpty()) Toast.makeText(this, "Nomor HP tidak boleh kosong!", Toast.LENGTH_SHORT).show()
         else if (binding.edtAlamat.text.isNullOrEmpty()) Toast.makeText(this, "Alamat tidak boleh kosong!", Toast.LENGTH_SHORT).show()
         else if (imageFoto.isNullOrEmpty()) Toast.makeText(this, "Silahkan pilih gambar dahulu sebelum menyimpan data",
@@ -102,6 +110,10 @@ class UbahProfileActivity : AppCompatActivity() {
                 Log.d("IMAGE-ENCODE", "onCreate: ${e.message}")
             }
             binding.progressBar.visibility = View.VISIBLE
+            registerViewModel.sendUpdateProfile(sharePreferences.getIntData(Constant.ADD_ID_USER),name!!,email!!,nomorHp!!,alamat!!,imageFoto).observe(this){
+                Toast.makeText(this, "Ubah data berhasil", Toast.LENGTH_SHORT).show()
+                onBackPressed()
+            }
         }
     }
 }

@@ -30,6 +30,16 @@ interface ApiService {
         @Field("alamat") alamat : String,) : Call<RegisterResponse>
 
     @FormUrlEncoded
+    @POST("api/profile-update/{id}")
+    fun ubahProfile(
+        @Path("id") idUser : Int,
+        @Field("nama") nama : String,
+        @Field("email") email : String,
+        @Field("nomor_hp") nomorHp : String,
+        @Field("alamat") alamat : String,
+        @Field("foto") foto : String? = null, ) : Call<UbahProfileResponse>
+
+    @FormUrlEncoded
     @POST("api/upload-katalog")
     fun uploadKatalog(
         @Field("id_user") idUser : Int,

@@ -81,6 +81,7 @@ class RegisterActivity : AppCompatActivity() {
                 var imageBytes = byteOut.toByteArray()
                 imageFoto = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT)
                 binding.imageProfile.setImageBitmap(bitmap)
+                println("yoo")
             }
             catch (e : Exception){
                 e.printStackTrace()
