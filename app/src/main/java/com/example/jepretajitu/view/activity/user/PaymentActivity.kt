@@ -70,7 +70,7 @@ class PaymentActivity : AppCompatActivity() {
 
 
         viewModel.dataTransaksi.observe(this){
-            Toast.makeText(this, "Pembayaran anda berhasil, silahkan tunggu !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Pesanan anda berhasil, silahkan tunggu!", Toast.LENGTH_SHORT).show()
             onBackPressed()
         }
     }
