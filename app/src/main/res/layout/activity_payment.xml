@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.user.PaymentActivity">
+
+
+    <TextView
+        android:id="@+id/tv_tanggal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins_black"
+        android:textColor="@color/black"
+        android:text="Masukan Tanggal Pesanan Anda"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <EditText
+        android:id="@+id/edt_tanggal"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Pilih Tanggal"
+        android:focusable="false"
+        app:layout_constraintTop_toBottomOf="@id/tv_tanggal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_alamat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins_black"
+        android:textColor="@color/black"
+        android:text="Masukan Alamat Anda"
+        app:layout_constraintTop_toBottomOf="@id/edt_tanggal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <EditText
+        android:id="@+id/edt_alamat"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Masukan alamat lengkap"
+        app:layout_constraintTop_toBottomOf="@id/tv_alamat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_slip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins_black"
+        android:textColor="@color/black"
+        android:text="Kirim Bukti Pembayaran Anda"
+        app:layout_constraintTop_toBottomOf="@id/edt_alamat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/edt_slip_pembayaran"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:focusable="false"
+        android:hint="Masukan Bukti Pembayaran"
+        app:layout_constraintTop_toBottomOf="@id/tv_slip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+        android:id="@+id/image_slip_pembayaran"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/edt_slip_pembayaran"
+        app:layout_constraintStart_toStartOf="@id/edt_slip_pembayaran"/>
+
+
+    <TextView
+        android:id="@+id/tv_note"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins_black"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"
+        android:text="Pembayaran ditransfer ke nomor rekening 12345678 A/N ADMIN JEPRETAN"
+        app:layout_constraintBottom_toTopOf="@id/btn_pesan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/btn_pesan"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="#2CBAFA"
+        android:fontFamily="@font/poppins_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/pesan_sekarang"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="12sp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

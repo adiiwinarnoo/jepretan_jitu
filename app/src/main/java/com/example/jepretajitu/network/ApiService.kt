@@ -53,6 +53,16 @@ interface ApiService {
         @Field("harga_product") hargaProduct : String
         ) : Call<AddKatalogResponse>
 
+    @FormUrlEncoded
+    @POST("api/payment")
+    fun payment(
+        @Field("id_user") idUser : Int,
+        @Field("id_product") idProduct : Int,
+        @Field("alamat") foto : String,
+        @Field("tanggal") fotoTwo : String,
+        @Field("bukti_pembayaran") fotoThree : String,
+        @Field("status") judulProduct : String) : Call<TransaksiResponse>
+
 
     @GET("api/katalog-all")
     fun getKatalogAll() : Call<DataKatalogResponse>
