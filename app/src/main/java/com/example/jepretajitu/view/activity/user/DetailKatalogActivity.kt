@@ -1,5 +1,6 @@
 package com.example.jepretajitu.view.activity.user
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +36,12 @@ class DetailKatalogActivity : AppCompatActivity() {
         binding.rvUlasan.layoutManager = LinearLayoutManager(this)
         lihatKatalogViewModel.getKatalogById(idUser)
         lihatKatalogViewModel.getReviewById(idProduct)
+
+        binding.btnPesan.setOnClickListener {
+            val intent = Intent(this,PaymentActivity::class.java)
+            intent.putExtra("ID-PRODUCT",idProduct)
+            startActivity(intent)
+        }
 
         lihatKatalogViewModel.katalogByIdData.observe(this){
             if (listImage.isNullOrEmpty()){
