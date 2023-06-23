@@ -40,6 +40,12 @@ interface ApiService {
         @Field("foto") foto : String? = null, ) : Call<UbahProfileResponse>
 
     @FormUrlEncoded
+    @POST("api/payment-update/{id}")
+    fun ubahPaymentStatus(
+        @Path("id") idProduct: Int,
+        @Field("status") status : String? = null, ) : Call<StatusPaymentResponse>
+
+    @FormUrlEncoded
     @POST("api/upload-katalog")
     fun uploadKatalog(
         @Field("id_user") idUser : Int,
@@ -75,4 +81,7 @@ interface ApiService {
 
     @GET("api/profile/{id}")
     fun getProfile (@Path("id") idUser : Int) : Call<ProfileResponse>
+
+    @GET("api/payment")
+    fun getPayment() : Call<GetPaymentResponse>
 }

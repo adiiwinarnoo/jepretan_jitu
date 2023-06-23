@@ -61,20 +61,6 @@
         app:layout_constraintTop_toBottomOf="@id/btn_approve_pembayaran"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-    <Button
-        android:id="@+id/btn_serep"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="@drawable/img_one"
-        android:backgroundTint="@color/icon_bg"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="35dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/poppins_light"
-        android:text="@string/approve_pembayaran"
-        app:layout_constraintTop_toBottomOf="@id/tv_admin_welcome"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
