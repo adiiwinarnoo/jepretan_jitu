@@ -26,5 +26,9 @@ class AddFotoActivity : AppCompatActivity() {
             startActivity(Intent(this, UploadKatalogActivity::class.java))
             finish()
         }
+
+        binding.btnLihatPesanan.setOnClickListener {
+            startActivity(Intent(this, KelolaPesananActivity::class.java))
+        }
     }
 }
