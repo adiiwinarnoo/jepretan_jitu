@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Adi Winarno/.gradle/caches/transforms-3/84e295150e045830dc1ecd8877f42f44/transformed/appcompat-1.5.0/res/drawable/abc_ratingbar_small_material.xml" value="0.2065" />
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2065" />
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/drawable/animation.xml" value="0.208" />
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/drawable/bg_btn_cancel_approve.xml" value="0.2065" />
@@ -26,6 +27,7 @@
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/layout/activity_ubah_profile.xml" value="0.275" />
+        <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/layout/activity_ulasan.xml" value="0.275" />
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/layout/activity_upload_katalog.xml" value="0.25" />
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/layout/item_approve.xml" value="0.27421875" />
         <entry key="..\:/Users/Adi Winarno/AndroidStudioProjects/jepretan_jitu/app/src/main/res/layout/item_fotographer.xml" value="0.27421875" />

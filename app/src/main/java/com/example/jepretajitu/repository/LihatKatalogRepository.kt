@@ -1,10 +1,7 @@
 package com.example.jepretajitu.repository
 
 import android.util.Log
-import com.example.jepretajitu.model.DataKatalogResponse
-import com.example.jepretajitu.model.ForgotPasswordResponse
-import com.example.jepretajitu.model.KatalogByIdResponse
-import com.example.jepretajitu.model.ReviewResponse
+import com.example.jepretajitu.model.*
 import com.example.jepretajitu.network.ApiConfig
 import com.example.jepretajitu.utils.Constant
 import retrofit2.Call
@@ -49,6 +46,19 @@ class LihatKatalogRepository {
             }
 
             override fun onFailure(call: Call<ReviewResponse>, t: Throwable) {
+                Log.d(TAG, "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
+    fun uploadReview(idProduct : Int,idUser: Int,review : String,rating : Int, onResult: (result: UploadReviewResponse) -> Unit){
+        apiConfig.server.uploadReview(idProduct,idUser,review,rating).enqueue(object : Callback<UploadReviewResponse>{
+            override fun onResponse(call: Call<UploadReviewResponse>, response: Response<UploadReviewResponse>) {
+                uploadReviewSuccess(response,onResult)
+            }
+
+            override fun onFailure(call: Call<UploadReviewResponse>, t: Throwable) {
                 Log.d(TAG, "onFailure: ${t.message}")
             }
 
@@ -112,6 +122,26 @@ class LihatKatalogRepository {
                 var default : ReviewResponse? = null
                 val messageError = Constant.EMAIL_NOT_REGIST
                 default = ReviewResponse(message = messageError)
+                onResult(default)
+            }
+        }
+    }
+
+    fun uploadReviewSuccess(response: Response<UploadReviewResponse>, onResult: (result: UploadReviewResponse) -> Unit){
+        when (response.code()){
+            200 -> {
+                onResult(response.body()!!)
+            }
+            400 ->{
+                var default : UploadReviewResponse? = null
+                val messageError = Constant.CHECK_CONNECTION
+                default = UploadReviewResponse(message = messageError)
+                onResult(default)
+            }
+            401 ->{
+                var default : UploadReviewResponse? = null
+                val messageError = Constant.EMAIL_NOT_REGIST
+                default = UploadReviewResponse(message = messageError)
                 onResult(default)
             }
         }

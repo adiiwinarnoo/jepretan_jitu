@@ -58,13 +58,12 @@ class DetailKatalogActivity : AppCompatActivity() {
                 listImage.add(KatalogBanner(it.dataKatalog!![0]!!.foto!!))
                 listImage.add(KatalogBanner(it.dataKatalog[0]!!.fotoTwo!!))
                 listImage.add(KatalogBanner(it.dataKatalog[0]!!.fotoThree!!))
+                adapterKatalog = KatalogBannerAdapter(listImage)
+                binding.viewPagerImage.adapter = adapterKatalog
+                binding.viewPagerImage.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                binding.circleIndicator.setViewPager(binding.viewPagerImage)
+                binding.circleIndicator.createIndicators(listImage.size,0)
             }
-            adapterKatalog = KatalogBannerAdapter(listImage)
-            binding.viewPagerImage.adapter = adapterKatalog
-            binding.viewPagerImage.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            binding.circleIndicator.setViewPager(binding.viewPagerImage)
-            binding.circleIndicator.createIndicators(listImage.size,0)
-
             binding.tvHargaDetailKatalog.text = "Rp.${it.dataKatalog!![0]!!.hargaProduct}"
             binding.tvJudulKatalog.text = it.dataKatalog[0]!!.judulProduct
             binding.tvValueDeskripsi.text = it.dataKatalog[0]?.deskripsi
@@ -81,11 +80,12 @@ class DetailKatalogActivity : AppCompatActivity() {
 
         transaksiViewModel.paymentById.observe(this){
             if (it.dataPaymentById != null){
-                Log.d("DATA-STATUS", "onCreate: ${it.dataPaymentById[0]?.status}")
                 if (it.dataPaymentById[0]!!.status.equals("pesanan selesai")) binding.btnPesan.setText("berikan ulasan")
                 if (binding.btnPesan.text.equals("berikan ulasan")){
                     binding.btnPesan.setOnClickListener {
-                        startActivity(Intent(this,UlasanActivity::class.java))
+                        val intent = Intent(this,UlasanActivity::class.java)
+                        intent.putExtra("ID-PRODUCT-DETAIL",idProduct)
+                        startActivity(intent)
                     }
                 }
             }
