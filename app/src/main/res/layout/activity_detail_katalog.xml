@@ -148,5 +148,20 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="12sp"/>
+    <TextView
+        android:id="@+id/btn_review"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:background="#2CBAFA"
+        android:visibility="gone"
+        android:fontFamily="@font/poppins_extrabold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="berikan ulasan"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="12sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

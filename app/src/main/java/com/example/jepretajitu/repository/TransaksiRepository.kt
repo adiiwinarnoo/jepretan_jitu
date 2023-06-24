@@ -1,8 +1,7 @@
 package com.example.jepretajitu.repository
 
 import android.util.Log
-import com.example.jepretajitu.model.DataKatalogResponse
-import com.example.jepretajitu.model.TransaksiResponse
+import com.example.jepretajitu.model.*
 import com.example.jepretajitu.network.ApiConfig
 import com.example.jepretajitu.utils.Constant
 import retrofit2.Call
@@ -27,6 +26,58 @@ class TransaksiRepository {
         })
     }
 
+    fun getPayment(result : (result : GetPaymentResponse)->Unit){
+        apiConfig.server.getPayment().enqueue(object : Callback<GetPaymentResponse>{
+            override fun onResponse(call: Call<GetPaymentResponse>, response: Response<GetPaymentResponse>) {
+               getPaymentSuccess(response,result)
+            }
+
+            override fun onFailure(call: Call<GetPaymentResponse>, t: Throwable) {
+                Log.d("PAYMENT-TRANSAKSI", "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
+    fun getPaymentById(idProduct: Int,idUser: Int,result : (result : PaymentByIdResponse)->Unit){
+        apiConfig.server.getPaymentById(idProduct,idUser).enqueue(object : Callback<PaymentByIdResponse>{
+            override fun onResponse(call: Call<PaymentByIdResponse>, response: Response<PaymentByIdResponse>) {
+               getPaymentSuccessById(response,result)
+            }
+
+            override fun onFailure(call: Call<PaymentByIdResponse>, t: Throwable) {
+                Log.d("PAYMENT-TRANSAKSI", "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
+    fun getPaymentForFotographer(result : (result:PaymentFotoResponse)-> Unit){
+        apiConfig.server.getPaymentFotoGrapher().enqueue(object : Callback<PaymentFotoResponse>{
+            override fun onResponse(call: Call<PaymentFotoResponse>, response: Response<PaymentFotoResponse>) {
+                getPaymentSuccessFoto(response,result)
+            }
+
+            override fun onFailure(call: Call<PaymentFotoResponse>, t: Throwable) {
+                Log.d("PAYMENT-TRANSAKSI", "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
+    fun changeStatusPayment(idProduct: Int, status : String, result : (result : StatusPaymentResponse)->Unit){
+        apiConfig.server.ubahPaymentStatus(idProduct, status).enqueue(object : Callback<StatusPaymentResponse>{
+            override fun onResponse(call: Call<StatusPaymentResponse>, response: Response<StatusPaymentResponse>) {
+                changePaymentSuccess(response,result)
+            }
+
+            override fun onFailure(call: Call<StatusPaymentResponse>, t: Throwable) {
+                Log.d("PAYMENT-TRANSAKSI", "onFailure-update-payment: ${t.message}")
+            }
+
+        })
+    }
+
     fun paymentSuccess(response : Response<TransaksiResponse>, onResult : (result : TransaksiResponse)-> Unit){
         when (response.code()){
             200 -> {
@@ -42,6 +93,87 @@ class TransaksiRepository {
                 var default : TransaksiResponse? = null
                 val messageError = Constant.EMAIL_NOT_REGIST
                 default = TransaksiResponse(message = messageError)
+                onResult(default)
+            }
+        }
+    }
+
+    fun getPaymentSuccess(response : Response<GetPaymentResponse>, onResult : (result : GetPaymentResponse)-> Unit){
+        when (response.code()){
+            200 -> {
+                onResult(response.body()!!)
+            }
+            400 ->{
+                var default : GetPaymentResponse? = null
+                val messageError = Constant.CHECK_CONNECTION
+                default = GetPaymentResponse(message = messageError)
+                onResult(default)
+            }
+            401 ->{
+                var default : GetPaymentResponse? = null
+                val messageError = Constant.EMAIL_NOT_REGIST
+                default = GetPaymentResponse(message = messageError)
+                onResult(default)
+            }
+        }
+    }
+
+    fun getPaymentSuccessById(response : Response<PaymentByIdResponse>, onResult : (result : PaymentByIdResponse)-> Unit){
+        Log.d("PAYMENT-TRANSAKSI", "onFailure-update-payment: ${response.body()}")
+        when (response.code()){
+            200 -> {
+                onResult(response.body()!!)
+            }
+            400 ->{
+                var default : PaymentByIdResponse? = null
+                val messageError = Constant.CHECK_CONNECTION
+                default = PaymentByIdResponse(message = messageError)
+                onResult(default)
+            }
+            401 ->{
+                var default : PaymentByIdResponse? = null
+                val messageError = Constant.EMAIL_NOT_REGIST
+                default = PaymentByIdResponse(message = messageError)
+                onResult(default)
+            }
+        }
+    }
+
+    fun getPaymentSuccessFoto(response : Response<PaymentFotoResponse>, onResult : (result : PaymentFotoResponse)-> Unit){
+        when (response.code()){
+            200 -> {
+                onResult(response.body()!!)
+            }
+            400 ->{
+                var default : PaymentFotoResponse? = null
+                val messageError = Constant.CHECK_CONNECTION
+                default = PaymentFotoResponse(message = messageError)
+                onResult(default)
+            }
+            401 ->{
+                var default : PaymentFotoResponse? = null
+                val messageError = Constant.EMAIL_NOT_REGIST
+                default = PaymentFotoResponse(message = messageError)
+                onResult(default)
+            }
+        }
+    }
+
+    fun changePaymentSuccess(response : Response<StatusPaymentResponse>, onResult : (result : StatusPaymentResponse)-> Unit){
+        when (response.code()){
+            200 -> {
+                onResult(response.body()!!)
+            }
+            400 ->{
+                var default : StatusPaymentResponse? = null
+                val messageError = Constant.CHECK_CONNECTION
+                default = StatusPaymentResponse(message = messageError)
+                onResult(default)
+            }
+            401 ->{
+                var default : StatusPaymentResponse? = null
+                val messageError = Constant.EMAIL_NOT_REGIST
+                default = StatusPaymentResponse(message = messageError)
                 onResult(default)
             }
         }
