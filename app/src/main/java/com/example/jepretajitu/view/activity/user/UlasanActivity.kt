@@ -44,6 +44,7 @@ class UlasanActivity : AppCompatActivity() {
 
         viewModel.uploadReviewData.observe(this){
             Toast.makeText(this, "Terima kasih anda berhasil memberi ulasan", Toast.LENGTH_SHORT).show()
+            onBackPressed()
         }
 
     }

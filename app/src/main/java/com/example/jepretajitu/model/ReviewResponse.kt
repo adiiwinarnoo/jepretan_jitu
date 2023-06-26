@@ -31,7 +31,7 @@ data class DataReviewItem(
 	@field:SerializedName("id_user")
 	val idUser: Int? = null,
 
-	@field:SerializedName("nama_user")
+	@field:SerializedName("nama")
 	val namaUser: String? = null,
 
 	@field:SerializedName("foto")

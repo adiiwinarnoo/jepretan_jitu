@@ -95,4 +95,9 @@ class DetailKatalogActivity : AppCompatActivity() {
     fun getPayment(){
         transaksiViewModel.getPaymentById(idProduct,sharedPref.getIntData(Constant.ADD_ID_USER))
     }
+
+    override fun onResume() {
+        super.onResume()
+        lihatKatalogViewModel.getReviewById(idProduct)
+    }
 }
