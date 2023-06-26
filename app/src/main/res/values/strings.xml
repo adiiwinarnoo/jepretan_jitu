@@ -42,6 +42,9 @@
     <string name="lihat_katalog">Lihat Katalog</string>
     <string name="pesan_sekarang">PESAN SEKARANG</string>
     <string name="ubah">Ubah</string>
+    <string name="kirim_ulasan">kirim ulasan</string>
+    <string name="berikan_ulasan_anda">Berikan ulasan anda</string>
+    <string name="masukan_ulasan_anda_tentang_jasa_ini">Masukan ulasan anda tentang jasa ini</string>
 
     <string-array name="level_users">
         <item>Pilih Level</item>

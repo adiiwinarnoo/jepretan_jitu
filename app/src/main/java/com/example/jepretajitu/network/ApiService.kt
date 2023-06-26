@@ -13,6 +13,14 @@ interface ApiService {
         @Field("password") password : String) : Call<LoginResponse>
 
     @FormUrlEncoded
+    @POST("api/review")
+    fun uploadReview(
+        @Field("id_product") idProduct: Int,
+        @Field("id_user") idUser: Int,
+        @Field("review") review : String,
+        @Field("rating") rating : Int) : Call<UploadReviewResponse>
+
+    @FormUrlEncoded
     @POST("api/forgot-password")
     fun forgotPassword(
         @Field("email") nik : String,

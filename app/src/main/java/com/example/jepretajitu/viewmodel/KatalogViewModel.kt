@@ -3,10 +3,7 @@ package com.example.jepretajitu.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.jepretajitu.model.DataKatalogResponse
-import com.example.jepretajitu.model.KatalogByIdResponse
-import com.example.jepretajitu.model.LoginResponse
-import com.example.jepretajitu.model.ReviewResponse
+import com.example.jepretajitu.model.*
 import com.example.jepretajitu.repository.LihatKatalogRepository
 import com.example.jepretajitu.repository.LoginRepository
 
@@ -16,6 +13,7 @@ class KatalogViewModel : ViewModel() {
     var katalogData = MutableLiveData<DataKatalogResponse>()
     var katalogByIdData = MutableLiveData<KatalogByIdResponse>()
     var reviewData = MutableLiveData<ReviewResponse>()
+    var uploadReviewData = MutableLiveData<UploadReviewResponse>()
 
     fun getKatalogAll() : MutableLiveData<DataKatalogResponse>{
         katalogRepository.getKatalogAll {
@@ -37,5 +35,12 @@ class KatalogViewModel : ViewModel() {
             reviewData.postValue(it)
         }
         return reviewData
+    }
+
+    fun uploadReview(idProduct : Int,idUser: Int,review : String, rating : Int) : MutableLiveData<UploadReviewResponse>{
+        katalogRepository.uploadReview(idProduct,idUser,review,rating){
+            uploadReviewData.postValue(it)
+        }
+        return uploadReviewData
     }
 }
