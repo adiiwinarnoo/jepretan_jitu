@@ -23,7 +23,7 @@ class AddKatalogRepository {
             }
 
             override fun onFailure(call: Call<AddKatalogResponse>, t: Throwable) {
-                Log.d("UPLOAD-KATALOG-FAILED", "onFailure: ${t.message}")
+                Log.d("UPLOAD-KATALOG-FAILED", "onFailure: ${t.message}, id user $idUser")
             }
         })
     }

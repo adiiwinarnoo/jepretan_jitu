@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
 import android.view.View
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.jepretajitu.databinding.ActivityRegisterBinding
@@ -26,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     var nomorHp : String? = null
     var alamat : String? = null
     var imageFoto : String? = null
-    var levelId : Int = 2
+    var levelId : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,19 @@ class RegisterActivity : AppCompatActivity() {
         }
         binding.btnSimpanRegister.setOnClickListener {
             checkedData()
+        }
+
+        binding.radioGroup.setOnCheckedChangeListener { p0, p1 ->
+            if (binding.rbUser.isChecked) {
+                levelId = 2
+                Log.d("DATA-RADIO", "checkedData: level id = $levelId")
+            } else if (binding.rbFoto.isChecked) {
+                levelId = 3
+                Log.d("DATA-RADIO", "checkedData: level id = $levelId")
+            } else {
+                levelId = 0
+                Log.d("DATA-RADIO", "checkedData: level id = $levelId")
+            }
         }
 
         registerViewModel.registerData.observe(this){
@@ -98,6 +112,7 @@ class RegisterActivity : AppCompatActivity() {
         else if (binding.edtAlamat.text.isNullOrEmpty()) Toast.makeText(this, "Alamat tidak boleh kosong!", Toast.LENGTH_SHORT).show()
         else if (imageFoto.isNullOrEmpty()) Toast.makeText(this, "Silahkan pilih gambar dahulu sebelum menyimpan data",
                 Toast.LENGTH_SHORT).show()
+        else if (levelId == 0) Toast.makeText(this, "Silahkan pilih jenis akun", Toast.LENGTH_SHORT).show()
         else{
             name = binding.edtName.text.toString()
             email = binding.edtEmail.text.toString()
@@ -109,6 +124,7 @@ class RegisterActivity : AppCompatActivity() {
             }catch (e : Exception){
                 Log.d("IMAGE-ENCODE", "onCreate: ${e.message}")
             }
+            Log.d("DATA-RADIO", "checkedData-2: level id = $levelId")
             binding.progressBar.visibility = View.VISIBLE
             sendRegister(name!!, email!!, password!!, nomorHp!!, alamat!!, imageFoto, levelId)
         }

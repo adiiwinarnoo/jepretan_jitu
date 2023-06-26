@@ -3,6 +3,7 @@ package com.example.jepretajitu.view.activity.user
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.jepretajitu.databinding.ActivityUlasanBinding
@@ -27,6 +28,7 @@ class UlasanActivity : AppCompatActivity() {
         sharedPref = SharedPrefences(this)
 
         idProduct = intent.getIntExtra("ID-PRODUCT-DETAIL",0)
+        Log.d("ID-PRODUCT", "onCreate: $idProduct")
 
         binding.ratingbar.setOnRatingBarChangeListener { ratingBar, rating, fromuser ->
             ratingValue = rating.toInt()

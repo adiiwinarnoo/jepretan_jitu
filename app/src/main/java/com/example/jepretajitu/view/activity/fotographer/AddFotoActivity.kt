@@ -8,6 +8,8 @@ import com.example.jepretajitu.databinding.ActivityAddFotoBinding
 import com.example.jepretajitu.databinding.ActivityLoginBinding
 import com.example.jepretajitu.utils.Constant
 import com.example.jepretajitu.utils.SharedPrefences
+import com.example.jepretajitu.view.activity.LoginActivity
+import com.example.jepretajitu.view.activity.ProfileActivity
 
 class AddFotoActivity : AppCompatActivity() {
 
@@ -20,15 +22,24 @@ class AddFotoActivity : AppCompatActivity() {
         sharedPrefences = SharedPrefences(this)
         setContentView(binding.root)
 
-        binding.tvFotograpWelcome.text = "${R.string.selamat_datang_kembali} ${sharedPrefences.getStringData(Constant.ADD_NAME)}"
+        binding.tvFotograpWelcome.text = "Selamat datang kembali, ${sharedPrefences.getStringData(Constant.ADD_NAME)}"
 
         binding.btnUploadKatalog.setOnClickListener {
             startActivity(Intent(this, UploadKatalogActivity::class.java))
-            finish()
         }
 
         binding.btnLihatPesanan.setOnClickListener {
             startActivity(Intent(this, KelolaPesananActivity::class.java))
+        }
+
+        binding.btnProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        binding.btnLogout.setOnClickListener {
+            sharedPrefences.putIntData(Constant.AFTER_LOGIN,0)
+            startActivity(Intent(this,LoginActivity::class.java))
+            finish()
         }
     }
 }

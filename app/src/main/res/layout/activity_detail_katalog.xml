@@ -137,8 +137,8 @@
     <TextView
         android:id="@+id/btn_pesan"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:background="#2CBAFA"
+        android:layout_height="45dp"
+        android:background="@color/prim"
         android:fontFamily="@font/poppins_extrabold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

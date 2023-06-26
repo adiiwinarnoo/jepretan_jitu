@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.jepretajitu.BuildConfig
@@ -37,11 +38,11 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             checkedData()
         }
         binding.btnLupaPassword.setOnClickListener {
             startActivity(Intent(this,ForgotPasswordActivity::class.java))
-            finish()
         }
     }
 
@@ -57,10 +58,12 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login(email!!, password!!).observe(this){
                 when (it.message){
                     Constant.SUCCESS_LOGIN -> {
+                        binding.progressBar.visibility = View.GONE
                         sharePreferences.putIntData(Constant.ADD_ID_LEVEL,it.dataLogin?.idLevel!!)
                         sharePreferences.putStringData(Constant.ADD_NAME,it.dataLogin.nama)
                         sharePreferences.putStringData(Constant.ADD_NOMOR_WHATSAPP,it.dataLogin.nomorHp)
                         sharePreferences.putIntData(Constant.ADD_ID_USER, it.dataLogin.id!!)
+                        sharePreferences.putIntData(Constant.AFTER_LOGIN,1)
                         when (it.dataLogin.idLevel) {
                             1 -> {
                                 startActivity(Intent(this, MenuUtama::class.java))
@@ -77,6 +80,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                     Constant.WRONG_PASSWORD_EMAIL -> {
+                        binding.progressBar.visibility = View.GONE
                         Toast.makeText(this, Constant.WRONG_PASSWORD_EMAIL, Toast.LENGTH_SHORT).show()
                     }
                 }

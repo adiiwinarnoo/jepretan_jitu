@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
         android:src="@drawable/icon_jepretan"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,8 +22,7 @@
         android:layout_height="wrap_content"
         android:text="@string/upload_katalog_text"
         android:fontFamily="@font/poppins_extrabold"
-        android:textColor="@color/icon_bg"
-        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/img_logo"
         app:layout_constraintStart_toStartOf="@id/edt_domisili"
         />
@@ -43,7 +42,7 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="@drawable/bg_katalog"/>
+        android:background="@drawable/img_one"/>
     <EditText
         android:id="@+id/edt_deskripsi"
         android:layout_width="0dp"
@@ -59,7 +58,7 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="@drawable/bg_katalog"/>
+        android:background="@drawable/img_one"/>
     <EditText
         android:id="@+id/edt_harga"
         android:layout_width="0dp"
@@ -75,7 +74,7 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="@drawable/bg_katalog"/>
+        android:background="@drawable/img_one"/>
     <EditText
         android:id="@+id/edt_judul"
         android:layout_width="0dp"
@@ -91,14 +90,14 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="@drawable/bg_katalog"/>
+        android:background="@drawable/img_one"/>
     <TextView
         android:id="@+id/tv_choose_foto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/silahkan_pilih_foto_untuk_katalog"
         android:fontFamily="@font/poppins_extrabold"
-        android:textColor="@color/icon_bg"
+        android:textColor="@color/black"
         android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/edt_judul"
         app:layout_constraintStart_toStartOf="@id/edt_harga"
@@ -136,10 +135,10 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@drawable/img_one"
-        android:backgroundTint="@color/icon_bg"
+        android:backgroundTint="@color/prim"
         android:layout_marginTop="25dp"
         android:textColor="@color/white"
-        android:fontFamily="@font/poppins_light"
+        android:fontFamily="@font/poppins_black"
         android:text="@string/upload"
         app:layout_constraintTop_toBottomOf="@id/img_add_3"
         app:layout_constraintStart_toStartOf="@id/edt_harga"

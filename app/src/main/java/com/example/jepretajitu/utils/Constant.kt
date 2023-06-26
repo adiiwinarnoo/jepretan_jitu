@@ -16,5 +16,7 @@ class Constant {
         const val ADD_NAME = "addName"
         const val ADD_ID_USER = "idUser"
         const val ADD_NOMOR_WHATSAPP = "nomorWhatsapp"
+
+        const val AFTER_LOGIN = "after_login"
     }
 }

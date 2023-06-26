@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/icon_bg"
+    android:background="@color/white"
     tools:context=".view.activity.RegisterActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/choose_foto_profile"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:fontFamily="@font/poppins_black"
         android:layout_marginTop="15dp"/>
 
@@ -44,7 +44,7 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="@drawable/text_bg"/>
+        android:background="@drawable/img_one"/>
     <EditText
         android:id="@+id/edt_email"
         android:layout_width="0dp"
@@ -60,7 +60,7 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="@drawable/text_bg"/>
+        android:background="@drawable/img_one"/>
     <EditText
         android:id="@+id/edt_nomor_hp"
         android:layout_width="0dp"
@@ -76,7 +76,7 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="@drawable/text_bg"/>
+        android:background="@drawable/img_one"/>
     <EditText
         android:id="@+id/edt_alamat"
         android:layout_width="0dp"
@@ -92,7 +92,7 @@
         android:paddingStart="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:background="@drawable/text_bg"/>
+        android:background="@drawable/img_one"/>
     <EditText
         android:id="@+id/edt_password"
         android:layout_width="0dp"
@@ -136,7 +136,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/img_one"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/prim"
         android:text="@string/simpan"
         android:textSize="18sp"
         android:fontFamily="@font/poppins_black"

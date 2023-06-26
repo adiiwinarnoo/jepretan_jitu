@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
         android:src="@drawable/icon_jepretan"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +27,6 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         android:fontFamily="@font/poppins_extrabold"
-        android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/img_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -82,7 +81,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@drawable/img_one"
-        android:backgroundTint="#2CBAFA"
+        android:backgroundTint="#ff914c"
         android:fontFamily="@font/poppins_extrabold"
         app:layout_constraintTop_toBottomOf="@id/edtPassword"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,5 +128,18 @@
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:fontFamily="@font/poppins_extrabold"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/prim"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

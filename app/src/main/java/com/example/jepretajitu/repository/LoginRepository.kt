@@ -16,15 +16,15 @@ class LoginRepository {
         apiConfig.server.login(email,password).enqueue(
             object : Callback<LoginResponse> {
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    Log.d("UNIT-TEST", "onResponse: ${response.body().toString()}")
+                    Log.d("LOGIN-FAILED", "onResponse: ${response.code()}")
                     if (response.isSuccessful && response.body() != null){
                         loginSuccess(response,onResult)
                         Response.success(response.body())
                     }else {
                         val messageError = "Login failed"
+                        Log.d("LOGIN-FAILED", "onResponse: ${response.code()} and message $messageError")
                         val default = LoginResponse(message = messageError)
-                        Response.success(default)
-                        onResult(default)
+                        loginSuccess(response, onResult)
                     }
                 }
 
@@ -38,6 +38,7 @@ class LoginRepository {
 
 
     fun loginSuccess(response: Response<LoginResponse>, onResult: (result: LoginResponse) -> Unit){
+        Log.d("LOGIN-FAILED", "onFailure: ${response.code()}")
         when (response.code()){
             200 -> {
                 onResult(response.body()!!)

@@ -55,6 +55,7 @@ class LihatKatalogRepository {
     fun uploadReview(idProduct : Int,idUser: Int,review : String,rating : Int, onResult: (result: UploadReviewResponse) -> Unit){
         apiConfig.server.uploadReview(idProduct,idUser,review,rating).enqueue(object : Callback<UploadReviewResponse>{
             override fun onResponse(call: Call<UploadReviewResponse>, response: Response<UploadReviewResponse>) {
+                Log.d("UPLOAD-REVIEWW", "onResponse: ${response.body()}")
                 uploadReviewSuccess(response,onResult)
             }
 
@@ -67,6 +68,7 @@ class LihatKatalogRepository {
 
     fun getKatalogSuccess(response: Response<DataKatalogResponse>, onResult: (result: DataKatalogResponse) -> Unit){
         Log.d(TAG, "getKatalogSuccess-code: ${response.code()}")
+        Log.d(TAG, "getKatalogSuccess-code: ${response.body()}")
         when (response.code()){
             200 -> {
                 onResult(response.body()!!)
@@ -108,6 +110,8 @@ class LihatKatalogRepository {
     }
 
     fun getReviewSuccess(response: Response<ReviewResponse>, onResult: (result: ReviewResponse) -> Unit){
+        Log.d(TAG, "getKatalogSuccess-code: ${response.code()}")
+        Log.d(TAG, "getKatalogSuccess-code: ${response.body()}")
         when (response.code()){
             200 -> {
                 onResult(response.body()!!)
