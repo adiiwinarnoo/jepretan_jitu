@@ -55,7 +55,7 @@ class UbahProfileActivity : AppCompatActivity() {
             binding.edtAlamat.setText(it.dataProfile.alamat)
             binding.edtEmail.setText(it.dataProfile.email)
             binding.edtNomorHp.setText(it.dataProfile.nomorHp)
-            Glide.with(this).load("http://192.168.1.10:8000" + it.dataProfile.foto).into(binding.imageProfile)
+            Glide.with(this).load("http://adiwinarno.my.id/public" + it.dataProfile.foto).into(binding.imageProfile)
         }
     }
 

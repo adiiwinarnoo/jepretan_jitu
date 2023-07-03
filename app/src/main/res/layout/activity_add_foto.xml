@@ -87,7 +87,7 @@
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_black"
         android:text="Katalog Saya"
-        app:layout_constraintTop_toBottomOf="@id/btn_profile"
+        app:layout_constraintTop_toBottomOf="@id/btn_lihat_pesanan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <Button

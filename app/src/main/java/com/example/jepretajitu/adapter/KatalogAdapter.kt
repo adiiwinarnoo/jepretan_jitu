@@ -32,7 +32,7 @@ class KatalogAdapter (val models : List<DataKatalogItem?>?) :
         var katalogCard = itemView.findViewById<CardView>(R.id.card_katalog)
 
         fun bind(image : DataKatalogItem){
-            Glide.with(itemView).load("http://192.168.1.10:8000"+ image.foto).into(imageBanner)
+            Glide.with(itemView).load("http://adiwinarno.my.id/public"+ image.foto).into(imageBanner)
         }
     }
 

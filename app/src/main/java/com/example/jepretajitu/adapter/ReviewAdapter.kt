@@ -31,7 +31,7 @@ class ReviewAdapter (val models : List<DataReviewItem?>?) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.userName.text = models!![position]?.namaUser
         holder.review.text = models[position]?.review
-        Glide.with(holder.itemView).load("http://192.168.1.10:8000" + models[position]?.foto).into(holder.imgProfil)
+        Glide.with(holder.itemView).load("http://adiwinarno.my.id/public" + models[position]?.foto).into(holder.imgProfil)
         holder.ratingBar.rating = models[position]?.rating!!.toFloat()
 
     }

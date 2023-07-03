@@ -1,5 +1,6 @@
 package com.example.jepretajitu.network
 
+import androidx.annotation.Nullable
 import com.example.jepretajitu.model.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -71,9 +72,9 @@ interface ApiService {
     @POST("api/katalog-update/{id}")
     fun updateKatalog(
         @Path("id") idProduct: Int,
-        @Field("foto") foto : String,
-        @Field("foto_two") fotoTwo : String,
-        @Field("foto_three") fotoThree : String,
+        @Field("foto") @Nullable foto : String? = null,
+        @Field("foto_two")@Nullable fotoTwo : String? = null,
+        @Field("foto_three")@Nullable fotoThree : String? = null,
         @Field("judul_product") judulProduct : String,
         @Field("nomor_whatsapp") nomorWhatsapp : String,
         @Field("deskripsi") deskripsi : String,

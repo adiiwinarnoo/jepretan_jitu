@@ -25,7 +25,7 @@ class AddKatalogViewModel : ViewModel() {
         return katalogData
     }
 
-    fun updateKatalog(idProduct : Int, foto : String, fotoTwo : String, fotoThree : String,
+    fun updateKatalog(idProduct : Int, foto : String?, fotoTwo : String?, fotoThree : String?,
                     judulProduct : String, nomorWhatsapp : String, deskripsi : String,
                     domisili : String, hargaProduct : String) : MutableLiveData<UpdateProductResponse>{
         addKatalogRepository.updateKatalog(idProduct,foto,fotoTwo,fotoThree,judulProduct,nomorWhatsapp,

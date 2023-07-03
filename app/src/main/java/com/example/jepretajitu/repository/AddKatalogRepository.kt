@@ -29,9 +29,10 @@ class AddKatalogRepository {
         })
     }
 
-    fun updateKatalog(idProduct : Int, foto : String, fotoTwo : String, fotoThree : String,
-                      judulProduct : String, nomorWhatsapp : String, deskripsi : String,
-                      domisili : String, hargaProduct : String, result : (result : UpdateProductResponse) -> Unit){
+    fun updateKatalog(
+        idProduct: Int, foto: String?, fotoTwo: String?, fotoThree: String?,
+        judulProduct: String, nomorWhatsapp: String, deskripsi: String,
+        domisili: String, hargaProduct: String, result: (result : UpdateProductResponse) -> Unit){
         apiConfig.server.updateKatalog(idProduct,foto,fotoTwo,fotoThree,judulProduct,nomorWhatsapp,
             deskripsi,domisili,hargaProduct).enqueue(object : Callback<UpdateProductResponse>{
             override fun onResponse(call: Call<UpdateProductResponse>, response: Response<UpdateProductResponse>) {

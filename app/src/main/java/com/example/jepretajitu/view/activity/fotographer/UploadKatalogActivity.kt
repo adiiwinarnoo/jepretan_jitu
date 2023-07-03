@@ -49,20 +49,22 @@ class UploadKatalogActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         idProduct = intent.getIntExtra("ID-PRODUCT-UPDATE",0)
+        Log.d("ID-PRO", "onCreate: $idProduct")
         if (idProduct != 0){
             viewModelProduct.getProductById(idProduct)
             viewModelProduct.dataGetProduct.observe(this){
+                Log.d("ID-PRO", "onCreate: ${it.dataProductById}")
                 Log.d("DATA-IMAGE-1", "onCreate: ${it.dataProductById!!.get(0)!!.foto}")
-                Glide.with(this).load("http://192.168.1.8:8000"+it.dataProductById?.get(0)!!.foto).into(binding.imgAdd)
-                Glide.with(this).load("http://192.168.1.8:8000"+it.dataProductById?.get(0)!!.fotoTwo).into(binding.imgAdd2)
-                Glide.with(this).load("http://192.168.1.8:8000"+it.dataProductById?.get(0)!!.fotoThree).into(binding.imgAdd3)
+                Glide.with(this).load("http://adiwinarno.my.id/public"+it.dataProductById?.get(0)!!.foto).into(binding.imgAdd)
+                Glide.with(this).load("http://adiwinarno.my.id/public"+it.dataProductById?.get(0)!!.fotoTwo).into(binding.imgAdd2)
+                Glide.with(this).load("http://adiwinarno.my.id/public"+it.dataProductById?.get(0)!!.fotoThree).into(binding.imgAdd3)
                 binding.edtDomisili.setText(it.dataProductById.get(0)!!.domisili)
                 binding.edtDeskripsi.setText(it.dataProductById.get(0)!!.deskripsi)
                 binding.edtHarga.setText(it.dataProductById.get(0)!!.hargaProduct)
                 binding.edtJudul.setText(it.dataProductById.get(0)!!.judulProduct)
-                imageOne = it.dataProductById.get(0)!!.foto
-                imageTwo = it.dataProductById.get(0)!!.fotoTwo
-                imageThree = it.dataProductById.get(0)!!.fotoThree
+                imageOne = null
+                imageTwo = null
+                imageThree = null
             }
         }
 
@@ -174,17 +176,15 @@ class UploadKatalogActivity : AppCompatActivity() {
 
 
     private fun checkedData(){
-        if (binding.edtDomisili.text.toString().isNullOrEmpty()) Toast.makeText(this,
-            R.string.editext_domisili_null, Toast.LENGTH_SHORT).show()
-        else if (binding.edtDeskripsi.text.toString().isNullOrEmpty()) Toast.makeText(this,
-            R.string.editext_deskripsi_null, Toast.LENGTH_SHORT).show()
-        else if (binding.edtHarga.text.toString().isNullOrEmpty()) Toast.makeText(this,
-            R.string.editext_harga_null, Toast.LENGTH_SHORT).show()
-        else if (binding.edtJudul.text.toString().isNullOrEmpty()) Toast.makeText(this,
-            R.string.editext_judul_null, Toast.LENGTH_SHORT).show()
-        else if (imageOne.isNullOrEmpty() || imageTwo.isNullOrEmpty() || imageThree.isNullOrEmpty())
-            Toast.makeText(this, R.string.image_null, Toast.LENGTH_SHORT).show()
-        else if (idProduct != 0){
+        if (idProduct != 0){
+            if (binding.edtDomisili.text.toString().isNullOrEmpty()) Toast.makeText(this,
+                R.string.editext_domisili_null, Toast.LENGTH_SHORT).show()
+            else if (binding.edtDeskripsi.text.toString().isNullOrEmpty()) Toast.makeText(this,
+                R.string.editext_deskripsi_null, Toast.LENGTH_SHORT).show()
+            else if (binding.edtHarga.text.toString().isNullOrEmpty()) Toast.makeText(this,
+                R.string.editext_harga_null, Toast.LENGTH_SHORT).show()
+            else if (binding.edtJudul.text.toString().isNullOrEmpty()) Toast.makeText(this,
+                R.string.editext_judul_null, Toast.LENGTH_SHORT).show()
             binding.progressbar.visibility = View.VISIBLE
             idUser = sharedPrefences.getIntData(Constant.ADD_ID_USER)
             judulProduct = binding.edtJudul.text.toString()
@@ -193,18 +193,35 @@ class UploadKatalogActivity : AppCompatActivity() {
             domisili = binding.edtDomisili.text.toString()
             deskripsi = binding.edtDeskripsi.text.toString()
             Log.d("ID-PRODUCT", "checkedData: $idProduct")
-            uploadKatalogViewModel.updateKatalog(idProduct,imageOne!!,imageTwo!!,imageThree!!,
+            Log.d("IMAGE-WWW", "checkedData: $imageOne")
+            Log.d("IMAGE-WWW", "checkedData: two $imageTwo")
+            uploadKatalogViewModel.updateKatalog(idProduct,imageOne,imageTwo,imageThree,
                 judulProduct,nomorWhatsapp,deskripsi,domisili,hargaProduct)
         }else{
-            binding.progressbar.visibility = View.VISIBLE
-            idUser = sharedPrefences.getIntData(Constant.ADD_ID_USER)
-            judulProduct = binding.edtJudul.text.toString()
-            hargaProduct = binding.edtHarga.text.toString()
-            nomorWhatsapp = sharedPrefences.getStringData(Constant.ADD_NOMOR_WHATSAPP)!!
-            domisili = binding.edtDomisili.text.toString()
-            deskripsi = binding.edtDeskripsi.text.toString()
-            uploadKatalogViewModel.sendKatalog(idUser,imageOne!!,imageTwo!!,imageThree!!,
-                judulProduct,nomorWhatsapp,deskripsi,domisili,hargaProduct)
+            if (binding.edtDomisili.text.toString().isNullOrEmpty()) Toast.makeText(this,
+                R.string.editext_domisili_null, Toast.LENGTH_SHORT).show()
+            else if (binding.edtDeskripsi.text.toString().isNullOrEmpty()) Toast.makeText(this,
+                R.string.editext_deskripsi_null, Toast.LENGTH_SHORT).show()
+            else if (binding.edtHarga.text.toString().isNullOrEmpty()) Toast.makeText(this,
+                R.string.editext_harga_null, Toast.LENGTH_SHORT).show()
+            else if (binding.edtJudul.text.toString().isNullOrEmpty()) Toast.makeText(this,
+                R.string.editext_judul_null, Toast.LENGTH_SHORT).show()
+            else if (imageOne.isNullOrEmpty() || imageTwo.isNullOrEmpty() || imageThree.isNullOrEmpty())
+                Toast.makeText(this, R.string.image_null, Toast.LENGTH_SHORT).show()
+            else{
+                binding.progressbar.visibility = View.VISIBLE
+                idUser = sharedPrefences.getIntData(Constant.ADD_ID_USER)
+                judulProduct = binding.edtJudul.text.toString()
+                hargaProduct = binding.edtHarga.text.toString()
+                nomorWhatsapp = sharedPrefences.getStringData(Constant.ADD_NOMOR_WHATSAPP)!!
+                domisili = binding.edtDomisili.text.toString()
+                deskripsi = binding.edtDeskripsi.text.toString()
+                Log.d("IMAGE-WWW", "checkedData: $imageOne")
+                Log.d("IMAGE-WWW", "checkedData: two $imageTwo")
+                uploadKatalogViewModel.sendKatalog(idUser,imageOne!!,imageTwo!!,imageThree!!,
+                    judulProduct,nomorWhatsapp,deskripsi,domisili,hargaProduct)
+            }
         }
+
     }
 }

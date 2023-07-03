@@ -42,7 +42,8 @@ class ProfileActivity : AppCompatActivity() {
             binding.tvEmail2.text = it.dataProfile.email
             binding.tvNomorHp2.text = it.dataProfile.nomorHp
             binding.tvAlamat2.text = it.dataProfile.alamat
-            Glide.with(this).load("http://192.168.1.10:8000" + it.dataProfile.foto).into(binding.imageProfile)
+            Log.d("IMAGE-PRF", "onCreate: ${it.dataProfile.foto}")
+            Glide.with(this).load("http://adiwinarno.my.id/public" + it.dataProfile.foto).into(binding.imageProfile)
             binding.progressBar.visibility = View.GONE
         }
     }

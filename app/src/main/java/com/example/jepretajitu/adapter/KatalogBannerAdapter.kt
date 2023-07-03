@@ -24,7 +24,7 @@ class KatalogBannerAdapter (val models : ArrayList<KatalogBanner>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val imageModel = models[position]
-        Glide.with(holder.itemView).load("http://192.168.1.10:8000" + imageModel.fotoUrl).into(holder.imageSlider)
+        Glide.with(holder.itemView).load("http://adiwinarno.my.id/public" + imageModel.fotoUrl).into(holder.imageSlider)
     }
 
     override fun getItemCount(): Int {

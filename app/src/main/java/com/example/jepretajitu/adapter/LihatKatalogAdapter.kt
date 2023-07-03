@@ -33,7 +33,7 @@ class LihatKatalogAdapter (val models : List<DataKatalogItem2?>?) :
         var katalogCard = itemView.findViewById<CardView>(R.id.card_katalog)
 
         fun bind(image : DataKatalogItem2){
-            Glide.with(itemView).load("http://192.168.1.10:8000"+ image.foto).into(imageBanner)
+            Glide.with(itemView).load("http://adiwinarno.my.id/public"+ image.foto).into(imageBanner)
         }
     }
 
