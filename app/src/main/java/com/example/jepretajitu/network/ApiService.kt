@@ -68,6 +68,20 @@ interface ApiService {
         ) : Call<AddKatalogResponse>
 
     @FormUrlEncoded
+    @POST("api/katalog-update/{id}")
+    fun updateKatalog(
+        @Path("id") idProduct: Int,
+        @Field("foto") foto : String,
+        @Field("foto_two") fotoTwo : String,
+        @Field("foto_three") fotoThree : String,
+        @Field("judul_product") judulProduct : String,
+        @Field("nomor_whatsapp") nomorWhatsapp : String,
+        @Field("deskripsi") deskripsi : String,
+        @Field("domisili") domisili : String,
+        @Field("harga_product") hargaProduct : String
+    ) : Call<UpdateProductResponse>
+
+    @FormUrlEncoded
     @POST("api/payment")
     fun payment(
         @Field("id_user") idUser : Int,
@@ -86,6 +100,9 @@ interface ApiService {
 
     @GET("api/review/{id}")
     fun getReview(@Path("id") idProduct : Int) : Call<ReviewResponse>
+
+    @GET("api/product/{id}")
+    fun getProduct(@Path("id") idProduct: Int) : Call<GetProductResponse>
 
     @GET("api/profile/{id}")
     fun getProfile (@Path("id") idUser : Int) : Call<ProfileResponse>

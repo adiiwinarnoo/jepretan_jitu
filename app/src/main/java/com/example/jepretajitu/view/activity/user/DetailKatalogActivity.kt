@@ -16,6 +16,7 @@ import com.example.jepretajitu.model.DataReviewItem
 import com.example.jepretajitu.model.KatalogBanner
 import com.example.jepretajitu.utils.Constant
 import com.example.jepretajitu.utils.SharedPrefences
+import com.example.jepretajitu.view.activity.fotographer.UploadKatalogActivity
 import com.example.jepretajitu.viewmodel.KatalogViewModel
 import com.example.jepretajitu.viewmodel.TransaksiViewModel
 
@@ -29,6 +30,7 @@ class DetailKatalogActivity : AppCompatActivity() {
     var listImage = ArrayList<KatalogBanner>()
     var idFotoGrapher = 0
     var idProduct = 0
+    var fotoGrapher = 0
     lateinit var sharedPref : SharedPrefences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,7 @@ class DetailKatalogActivity : AppCompatActivity() {
 
         idFotoGrapher = intent.getIntExtra("ID-USER",0)
         idProduct = intent.getIntExtra("ID-PRODUCT",0)
+        fotoGrapher = intent.getIntExtra("FOTOGRAPHER",0)
         binding.rvUlasan.layoutManager = LinearLayoutManager(this)
         lihatKatalogViewModel.getKatalogById(idFotoGrapher)
         lihatKatalogViewModel.getReviewById(idProduct)
@@ -51,6 +54,16 @@ class DetailKatalogActivity : AppCompatActivity() {
             val intent = Intent(this,PaymentActivity::class.java)
             intent.putExtra("ID-PRODUCT",idProduct)
             startActivity(intent)
+        }
+
+        if (fotoGrapher == 100) binding.btnPesan.setText("UPDATE KATALOG")
+        if (binding.btnPesan.text.equals("UPDATE KATALOG")){
+            binding.btnPesan.setOnClickListener {
+                val intent = Intent(this,UploadKatalogActivity::class.java)
+                intent.putExtra("UPDATE-KATALOG",100)
+                intent.putExtra("ID-PRODUCT-UPDATE",idProduct)
+                startActivity(intent)
+            }
         }
 
         lihatKatalogViewModel.katalogByIdData.observe(this){

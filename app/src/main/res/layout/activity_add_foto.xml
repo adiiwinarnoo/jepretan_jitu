@@ -76,6 +76,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <Button
+        android:id="@+id/btn_lihat_katalog"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/img_one"
+        android:backgroundTint="@color/prim"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_black"
+        android:text="Katalog Saya"
+        app:layout_constraintTop_toBottomOf="@id/btn_profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <Button
         android:id="@+id/btn_logout"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -87,7 +102,7 @@
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_black"
         android:text="@string/logout"
-        app:layout_constraintTop_toBottomOf="@id/btn_lihat_pesanan"
+        app:layout_constraintTop_toBottomOf="@id/btn_lihat_katalog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

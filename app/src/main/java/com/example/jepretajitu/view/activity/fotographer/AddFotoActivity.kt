@@ -35,6 +35,9 @@ class AddFotoActivity : AppCompatActivity() {
         binding.btnProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+        binding.btnLihatKatalog.setOnClickListener {
+            startActivity(Intent(this, KatalogFotoActivity::class.java))
+        }
 
         binding.btnLogout.setOnClickListener {
             sharedPrefences.putIntData(Constant.AFTER_LOGIN,0)
