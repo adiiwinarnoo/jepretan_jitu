@@ -1,5 +1,6 @@
 package com.example.jepretajitu.view.activity.user
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -46,7 +47,8 @@ class UlasanActivity : AppCompatActivity() {
 
         viewModel.uploadReviewData.observe(this){
             Toast.makeText(this, "Terima kasih anda berhasil memberi ulasan", Toast.LENGTH_SHORT).show()
-            onBackPressed()
+            sharedPref.putIntData(Constant.SAVING_AFTER_REVIEW,50)
+            super.onBackPressed()
         }
 
     }

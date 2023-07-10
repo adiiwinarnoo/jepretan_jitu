@@ -1,5 +1,6 @@
 package com.example.jepretajitu.view.activity.user
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -47,6 +48,7 @@ class DetailKatalogActivity : AppCompatActivity() {
         binding.rvUlasan.layoutManager = LinearLayoutManager(this)
         lihatKatalogViewModel.getKatalogById(idFotoGrapher)
         lihatKatalogViewModel.getReviewById(idProduct)
+        val idAfter = sharedPref.getIntData(Constant.SAVING_AFTER_REVIEW)
 
         getPayment()
 
@@ -56,12 +58,22 @@ class DetailKatalogActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        if (fotoGrapher == 100) binding.btnPesan.setText("UPDATE KATALOG")
+        Log.d("FOTO-FOTO", "onCreate: $fotoGrapher")
+        if (fotoGrapher == 100){
+            binding.btnPesan.setText("UPDATE KATALOG")
+        }
+
         if (binding.btnPesan.text.equals("UPDATE KATALOG")){
             binding.btnPesan.setOnClickListener {
                 val intent = Intent(this,UploadKatalogActivity::class.java)
                 intent.putExtra("UPDATE-KATALOG",100)
                 intent.putExtra("ID-PRODUCT-UPDATE",idProduct)
+                startActivity(intent)
+            }
+        }else if (binding.btnPesan.text.equals("PESAN LAGI")){
+            binding.btnPesan.setOnClickListener {
+                val intent = Intent(this,PaymentActivity::class.java)
+                intent.putExtra("ID-PRODUCT",idProduct)
                 startActivity(intent)
             }
         }
@@ -94,6 +106,7 @@ class DetailKatalogActivity : AppCompatActivity() {
         transaksiViewModel.paymentById.observe(this){
             if (it.dataPaymentById != null){
                 if (it.dataPaymentById[0]!!.status.equals("pesanan selesai")) binding.btnPesan.setText("berikan ulasan")
+                if (idAfter == 50) binding.btnPesan.setText("PESAN LAGI")
                 if (binding.btnPesan.text.equals("berikan ulasan")){
                     binding.btnPesan.setOnClickListener {
                         val intent = Intent(this,UlasanActivity::class.java)
@@ -112,5 +125,13 @@ class DetailKatalogActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         lihatKatalogViewModel.getReviewById(idProduct)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == requestCode && resultCode == Activity.RESULT_OK){
+            fotoGrapher = data?.getIntExtra("FOTOGRAPHER-CHANGE",0)!!
+            Log.d("FOTO-FOTO", "onActivityResult: $fotoGrapher")
+        }
     }
 }

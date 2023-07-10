@@ -18,5 +18,6 @@ class Constant {
         const val ADD_NOMOR_WHATSAPP = "nomorWhatsapp"
 
         const val AFTER_LOGIN = "after_login"
+        const val SAVING_AFTER_REVIEW = "after_review"
     }
 }
