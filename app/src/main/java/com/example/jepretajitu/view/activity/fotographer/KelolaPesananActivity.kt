@@ -34,10 +34,18 @@ class KelolaPesananActivity : AppCompatActivity() {
                 binding.recyclerView.adapter = adapter
                 adapter.setItemClickListener(object : KelolaPesananAdapter.ItemClickListener{
                     override fun onEnd(view: View, id: Int) {
-                        val status = "pesanan selesai"
+                        val status = "pesanan diterima"
                         pesananViewModel.changePayment(id,status)
                         Toast.makeText(this@KelolaPesananActivity, "Mohon tunggu sebentar.", Toast.LENGTH_SHORT).show()
                     }
+                })
+                adapter.setItemClickListener2(object : KelolaPesananAdapter.ItemClickListener2{
+                    override fun onReject(view: View, id: Int) {
+                        val status = "pesanan ditolak"
+                        pesananViewModel.changePayment(id,status)
+                        Toast.makeText(this@KelolaPesananActivity, "Mohon tunggu sebentar.", Toast.LENGTH_SHORT).show()
+                    }
+
                 })
             }else{
                 adapter = KelolaPesananAdapter(emptyList())

@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.activity.admin.LihatTransaksiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.user.LihatPesananActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.fotographer.KatalogFotoActivity"
             android:exported="false" />
         <activity

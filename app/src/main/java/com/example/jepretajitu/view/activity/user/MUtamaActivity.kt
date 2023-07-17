@@ -37,5 +37,9 @@ class MUtamaActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+        binding.btnLihatPesanan.setOnClickListener {
+            startActivity(Intent(this, LihatPesananActivity::class.java))
+
+        }
     }
 }

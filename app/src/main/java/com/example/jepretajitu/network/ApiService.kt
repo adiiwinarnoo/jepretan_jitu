@@ -116,4 +116,10 @@ interface ApiService {
 
     @GET("api/payment/{id}/{id_user}")
     fun getPaymentById(@Path("id") idProduct : Int,@Path("id_user") idUser: Int) : Call<PaymentByIdResponse>
+
+    @GET("api/payment/{id}")
+    fun getPaymentByIdUser(@Path("id") idUser : Int) : Call<PaymentByIdResponse>
+
+    @GET("api/all-payment")
+    fun getAllTransaksi(): Call<GetTransaksiAdminResponse>
 }

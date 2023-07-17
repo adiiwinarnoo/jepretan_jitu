@@ -3,6 +3,7 @@ package com.example.jepretajitu.view.activity.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.jepretajitu.adapter.LihatTransaksiAdapter
 import com.example.jepretajitu.databinding.ActivityMenuUtamaBinding
 import com.example.jepretajitu.utils.Constant
 import com.example.jepretajitu.utils.SharedPrefences
@@ -28,5 +29,10 @@ class MenuUtama : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+
+        binding.btnLihatTransaksi.setOnClickListener {
+            startActivity(Intent(this,LihatTransaksiActivity::class.java))
+        }
+
     }
 }

@@ -52,6 +52,33 @@ class TransaksiRepository {
         })
     }
 
+    fun getPaymentByIdUser(idUser: Int,result : (result : PaymentByIdResponse)->Unit){
+        apiConfig.server.getPaymentByIdUser(idUser).enqueue(object : Callback<PaymentByIdResponse>{
+            override fun onResponse(call: Call<PaymentByIdResponse>, response: Response<PaymentByIdResponse>) {
+                Log.d("DATA-USER-PAY", "onResponse: ${response.toString()}")
+                getPaymentSuccessById(response,result)
+            }
+
+            override fun onFailure(call: Call<PaymentByIdResponse>, t: Throwable) {
+                Log.d("PAYMENT-TRANSAKSI", "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
+    fun getAllTransaksi(result :(result : GetTransaksiAdminResponse)-> Unit ){
+        apiConfig.server.getAllTransaksi().enqueue(object : Callback<GetTransaksiAdminResponse>{
+            override fun onResponse(call: Call<GetTransaksiAdminResponse>, response: Response<GetTransaksiAdminResponse>) {
+                getTransaksiSucces(response,result)
+            }
+
+            override fun onFailure(call: Call<GetTransaksiAdminResponse>, t: Throwable) {
+                Log.d("TRANSAKSI-FAILED", "onFailure: ${t.message}")
+            }
+
+        })
+    }
+
     fun getPaymentForFotographer(result : (result:PaymentFotoResponse)-> Unit){
         apiConfig.server.getPaymentFotoGrapher().enqueue(object : Callback<PaymentFotoResponse>{
             override fun onResponse(call: Call<PaymentFotoResponse>, response: Response<PaymentFotoResponse>) {
@@ -93,6 +120,26 @@ class TransaksiRepository {
                 var default : TransaksiResponse? = null
                 val messageError = Constant.EMAIL_NOT_REGIST
                 default = TransaksiResponse(message = messageError)
+                onResult(default)
+            }
+        }
+    }
+
+    fun getTransaksiSucces(response : Response<GetTransaksiAdminResponse>, onResult : (result : GetTransaksiAdminResponse)-> Unit){
+        when (response.code()){
+            200 -> {
+                onResult(response.body()!!)
+            }
+            400 ->{
+                var default : GetTransaksiAdminResponse? = null
+                val messageError = Constant.CHECK_CONNECTION
+                default = GetTransaksiAdminResponse(message = messageError)
+                onResult(default)
+            }
+            401 ->{
+                var default : GetTransaksiAdminResponse? = null
+                val messageError = Constant.EMAIL_NOT_REGIST
+                default = GetTransaksiAdminResponse(message = messageError)
                 onResult(default)
             }
         }

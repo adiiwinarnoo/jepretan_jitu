@@ -14,6 +14,8 @@ class TransaksiViewModel : ViewModel() {
     var dataUpdateStatus = MutableLiveData<StatusPaymentResponse>()
     var fotoGrapherData = MutableLiveData<PaymentFotoResponse>()
     var paymentById = MutableLiveData<PaymentByIdResponse>()
+    var paymentByIdUser = MutableLiveData<PaymentByIdResponse>()
+    var adminData = MutableLiveData<GetTransaksiAdminResponse>()
 
     fun sendPayment(idUser : Int, idProduct : Int, alamat : String, tanggal : String,
                     buktiPembayaran : String, status : String) : MutableLiveData<TransaksiResponse>{
@@ -35,6 +37,13 @@ class TransaksiViewModel : ViewModel() {
         }
         return paymentById
     }
+    fun getPaymentByIdUser(idUser: Int) : MutableLiveData<PaymentByIdResponse>{
+        transaksiRepo.getPaymentByIdUser(idUser) {
+            Log.d("DATA-USER-PAY", "onResponse: ${it.toString()}")
+            paymentByIdUser.postValue(it)
+        }
+        return paymentByIdUser
+    }
 
     fun getFotoGrapherPayment() : MutableLiveData<PaymentFotoResponse>{
         transaksiRepo.getPaymentForFotographer {
@@ -49,6 +58,13 @@ class TransaksiViewModel : ViewModel() {
             getPayment()
         }
         return dataUpdateStatus
+    }
+
+    fun getAllTransaksi() : MutableLiveData<GetTransaksiAdminResponse>{
+        transaksiRepo.getAllTransaksi {
+            adminData.postValue(it)
+        }
+        return adminData
     }
 
 }

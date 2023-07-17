@@ -44,5 +44,12 @@ data class DataPaymentItem(
 	val alamat: String? = null,
 
 	@field:SerializedName("status")
-	var status: String? = null
+	var status: String? = null,
+
+	@field:SerializedName("nomor_hp")
+	var nomorHpUser : String? =null,
+
+	@field:SerializedName("nomor_whatsapp")
+	var nomorWhatsapp : String? =null,
+
 )

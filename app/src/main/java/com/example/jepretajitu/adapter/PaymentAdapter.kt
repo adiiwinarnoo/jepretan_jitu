@@ -30,6 +30,9 @@ class PaymentAdapter (val models : List<DataPaymentItem?>) :
         var tanggal = itemView.findViewById<TextView>(R.id.tv_tanggal)
         var approve = itemView.findViewById<TextView>(R.id.btnApprove)
         var reject = itemView.findViewById<TextView>(R.id.tvNoApprove)
+        var nomorWaUser = itemView.findViewById<TextView>(R.id.value_nomor_whatsapp_user)
+        var nomorWaFoto = itemView.findViewById<TextView>(R.id.value_nomor_whatsapp_foto)
+        var harga = itemView.findViewById<TextView>(R.id.tv_harga)
 
     }
 
@@ -45,10 +48,13 @@ class PaymentAdapter (val models : List<DataPaymentItem?>) :
         holder.reject.setOnClickListener {
             itemClickListener.onReject(it,models[position]!!.id!!)
         }
-        holder.nama.text = models[position]?.nama
+        holder.nama.text = "Nama Pemesan : ${models[position]?.nama}"
         holder.tittleProduct.text = models[position]?.judulProduct
         holder.status.text = models[position]?.status
         holder.tanggal.text = models[position]?.tanggal
+        holder.nomorWaUser.text = models[position]?.nomorHpUser
+        holder.nomorWaFoto.text = models[position]?.nomorWhatsapp
+        holder.harga.text = models[position]?.hargaProduct
     }
 
     override fun getItemCount(): Int {
